@@ -3,6 +3,7 @@
 # Setup script — Flow Criativos Landing Page
 # ==============================================================
 # Executa em VPS Ubuntu 22.04 com Nginx já instalado.
+# PORTAS: HTTP 9090 / HTTPS 9443
 # Uso: sudo bash setup.sh
 # ==============================================================
 
@@ -12,12 +13,16 @@ set -e
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
-NC='\033[0m' # No color
+NC='\033[0m'
 BOLD='\033[1m'
+
+HTTP_PORT=9090
+HTTPS_PORT=9443
 
 echo ""
 echo -e "${BOLD}╔══════════════════════════════════════╗${NC}"
 echo -e "${BOLD}║   Flow Criativos — Setup Script      ║${NC}"
+echo -e "${BOLD}║   HTTP :${HTTP_PORT}  |  HTTPS :${HTTPS_PORT}       ║${NC}"
 echo -e "${BOLD}╚══════════════════════════════════════╝${NC}"
 echo ""
 
@@ -33,11 +38,12 @@ fi
 # Passo 2: Verifica se o Nginx está instalado
 # ----------------------------------------------------------
 if ! command -v nginx &> /dev/null; then
-  echo -e "${RED}[ERRO]${NC} Nginx não encontrado. Instale com: sudo apt install nginx"
-  exit 1
+  echo -e "${YELLOW}[...]${NC} Nginx não encontrado. Instalando..."
+  apt update && apt install -y nginx
+  echo -e "${GREEN}[✓]${NC} Nginx instalado"
+else
+  echo -e "${GREEN}[✓]${NC} Nginx encontrado"
 fi
-
-echo -e "${GREEN}[✓]${NC} Nginx encontrado"
 
 # ----------------------------------------------------------
 # Passo 3: Cria a pasta do site
@@ -90,7 +96,19 @@ ln -s "$NGINX_AVAILABLE" "$NGINX_ENABLED"
 echo -e "${GREEN}[✓]${NC} Symlink criado em ${NGINX_ENABLED}"
 
 # ----------------------------------------------------------
-# Passo 7: Testa configuração do Nginx
+# Passo 7: Abre as portas no firewall (se UFW estiver ativo)
+# ----------------------------------------------------------
+if command -v ufw &> /dev/null && ufw status | grep -q "active"; then
+  echo -e "${YELLOW}[...]${NC} Abrindo portas ${HTTP_PORT} e ${HTTPS_PORT} no UFW..."
+  ufw allow ${HTTP_PORT}/tcp
+  ufw allow ${HTTPS_PORT}/tcp
+  echo -e "${GREEN}[✓]${NC} Portas abertas no firewall"
+else
+  echo -e "${YELLOW}[!]${NC} UFW não ativo — verifique manualmente se as portas ${HTTP_PORT} e ${HTTPS_PORT} estão abertas"
+fi
+
+# ----------------------------------------------------------
+# Passo 8: Testa configuração do Nginx
 # ----------------------------------------------------------
 echo -e "${YELLOW}[...]${NC} Testando configuração do Nginx..."
 if nginx -t 2>&1; then
@@ -101,7 +119,7 @@ else
 fi
 
 # ----------------------------------------------------------
-# Passo 8: Recarrega o Nginx
+# Passo 9: Recarrega o Nginx
 # ----------------------------------------------------------
 echo -e "${YELLOW}[...]${NC} Recarregando Nginx..."
 systemctl reload nginx
@@ -110,10 +128,14 @@ echo -e "${GREEN}[✓]${NC} Nginx recarregado"
 # ----------------------------------------------------------
 # Instruções finais
 # ----------------------------------------------------------
+IP_ADDR=$(hostname -I | awk '{print $1}')
+
 echo ""
-echo -e "${BOLD}══════════════════════════════════════${NC}"
+echo -e "${BOLD}══════════════════════════════════════════════${NC}"
 echo -e "${GREEN}${BOLD}  Setup concluído com sucesso!${NC}"
-echo -e "${BOLD}══════════════════════════════════════${NC}"
+echo -e "${BOLD}══════════════════════════════════════════════${NC}"
+echo ""
+echo -e "  ${GREEN}Acesse agora:${NC} http://${IP_ADDR}:${HTTP_PORT}"
 echo ""
 echo -e "  ${BOLD}Próximos passos:${NC}"
 echo ""
@@ -124,13 +146,15 @@ echo ""
 echo -e "  2. ${YELLOW}Teste e recarregue${NC} o Nginx:"
 echo -e "     nginx -t && systemctl reload nginx"
 echo ""
-echo -e "  3. ${YELLOW}Configure o DNS${NC} do seu domínio apontando para o IP desta VPS"
+echo -e "  3. ${YELLOW}Configure o DNS${NC} do seu domínio apontando para: ${IP_ADDR}"
 echo ""
-echo -e "  4. ${YELLOW}Adicione SSL${NC} com Certbot:"
-echo -e "     sudo apt install certbot python3-certbot-nginx"
-echo -e "     sudo certbot --nginx -d SEUDOMINIO.COM -d www.SEUDOMINIO.COM"
+echo -e "  4. ${YELLOW}Adicione SSL${NC} (porta ${HTTPS_PORT}):"
+echo -e "     sudo apt install certbot"
+echo -e "     sudo certbot certonly --standalone -d SEUDOMINIO.COM -d www.SEUDOMINIO.COM"
+echo -e "     Depois descomente o bloco SSL no nginx.conf e recarregue"
 echo ""
 echo -e "  5. ${YELLOW}Substitua o link de pagamento${NC} no index.html:"
+echo -e "     nano ${SITE_DIR}/index.html"
 echo -e "     Busque href=\"#\" no botão de compra e coloque seu link real"
 echo ""
-echo -e "${BOLD}══════════════════════════════════════${NC}"
+echo -e "${BOLD}══════════════════════════════════════════════${NC}"
