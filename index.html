@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flow Criativos — Automatize a geração de vídeos no Google Flow</title>
+  <meta name="description" content="Extensão Chrome que automatiza a geração de vídeos em lote no Google Flow. Gere dezenas de vídeos enquanto você dorme. Pagamento único, sem mensalidade.">
+  <meta property="og:title" content="Flow Criativos — Gere dezenas de vídeos enquanto você dorme">
+  <meta property="og:description" content="Extensão Chrome para Google Flow. Automatize a geração de vídeos em lote. Monte a fila, clique uma vez e a extensão faz todo o trabalho.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #09090b;
+      --bg-secondary: #111113;
+      --bg-card: #18181b;
+      --bg-card-hover: #1f1f23;
+      --border: #27272a;
+      --border-light: #3f3f46;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #a855f7;
+      --accent-light: #c084fc;
+      --accent-dark: #7c3aed;
+      --accent-glow: rgba(168, 85, 247, 0.15);
+      --accent-glow-strong: rgba(168, 85, 247, 0.3);
+      --green: #22c55e;
+      --green-bg: rgba(34, 197, 94, 0.1);
+      --red: #ef4444;
+      --red-bg: rgba(239, 68, 68, 0.08);
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --max-width: 1200px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ========================================
+       UTILITIES
+       ======================================== */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-light);
+      margin-bottom: 16px;
+      padding: 6px 14px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 100px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ========================================
+       BUTTONS
+       ======================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      color: white;
+      box-shadow: 0 0 24px var(--accent-glow-strong), 0 4px 16px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px var(--accent-glow-strong), 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-sm {
+      padding: 10px 24px;
+      font-size: 0.9rem;
+    }
+
+    .btn-lg {
+      padding: 20px 48px;
+      font-size: 1.1rem;
+      border-radius: var(--radius-lg);
+    }
+
+    /* ========================================
+       NAV
+       ======================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: all var(--transition);
+      background: transparent;
+    }
+
+    .nav.scrolled {
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo .logo-accent {
+      color: var(--accent-light);
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: var(--radius);
+      transition: all var(--transition);
+      font-family: var(--font);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gradient background orbs */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--bg-primary), transparent);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      padding: 8px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* ========================================
+       STATS BAR
+       ======================================== */
+    .stats {
+      padding: 0 0 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .stat-item {
+      background: var(--bg-secondary);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: var(--accent-light);
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* ========================================
+       PROBLEM SECTION
+       ======================================== */
+    .problem {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .pain-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all var(--transition);
+    }
+
+    .pain-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .pain-icon {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .pain-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .pain-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       SOLUTION SECTION
+       ======================================== */
+    .solution-content {
+      max-width: 720px;
+    }
+
+    .solution-content > p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: all var(--transition);
+    }
+
+    .feature-item:hover {
+      border-color: rgba(168, 85, 247, 0.3);
+      background: var(--bg-card-hover);
+    }
+
+    .feature-check {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-glow);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 8px;
+      color: var(--accent-light);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .feature-item span {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* ========================================
+       HOW IT WORKS
+       ======================================== */
+    .steps {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    /* Connecting line */
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: calc(12.5% + 12px);
+      right: calc(12.5% + 12px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-dark), var(--accent-light));
+      opacity: 0.3;
+    }
+
+    .step-card {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       BENEFITS
+       ======================================== */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .benefit-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-4px);
+    }
+
+    .benefit-card:hover::before {
+      opacity: 1;
+    }
+
+    .benefit-icon {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       AUDIENCE
+       ======================================== */
+    .audience {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .audience-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+      transition: all var(--transition);
+    }
+
+    .audience-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .audience-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .audience-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .audience-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       BEFORE vs AFTER
+       ======================================== */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .comparison-col {
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-col.before {
+      background: var(--red-bg);
+      border-color: rgba(239, 68, 68, 0.15);
+    }
+
+    .comparison-col.after {
+      background: var(--green-bg);
+      border-color: rgba(34, 197, 94, 0.15);
+    }
+
+    .comparison-header {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .before .comparison-header {
+      color: var(--red);
+    }
+
+    .after .comparison-header {
+      color: var(--green);
+    }
+
+    .comparison-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .comparison-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    .comparison-list li .icon {
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    /* ========================================
+       PRICING
+       ======================================== */
+    .pricing {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pricing-card {
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--bg-primary);
+      border: 2px solid rgba(168, 85, 247, 0.3);
+      border-radius: var(--radius-xl);
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 60px var(--accent-glow);
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bg-primary);
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      padding: 6px 20px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .pricing-amount {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .pricing-currency {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .pricing-value {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .pricing-period {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .pricing-features li .check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-glow);
+      border-radius: 6px;
+      color: var(--accent-light);
+      font-size: 0.75rem;
+    }
+
+    .pricing-cta {
+      width: 100%;
+    }
+
+    .pricing-secure {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* ========================================
+       FAQ
+       ======================================== */
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .faq-item.active {
+      border-color: var(--border-light);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: color var(--transition);
+    }
+
+    .faq-question:hover {
+      color: var(--accent-light);
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: transform var(--transition);
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ========================================
+       FINAL CTA
+       ======================================== */
+    .final-cta {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .final-cta .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta .section-subtitle {
+      margin: 0 auto 40px;
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .footer-logo .logo-accent {
+      color: var(--accent-light);
+    }
+
+    .footer-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ========================================
+       RESPONSIVE: TABLET
+       ======================================== */
+    @media (max-width: 1024px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      .steps-grid::before {
+        display: none;
+      }
+    }
+
+    /* ========================================
+       RESPONSIVE: MOBILE
+       ======================================== */
+    @media (max-width: 768px) {
+      .section {
+        padding: 72px 0;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pain-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card {
+        padding: 36px 24px;
+      }
+
+      .pricing-value {
+        font-size: 3.2rem;
+      }
+
+      .btn-lg {
+        padding: 16px 32px;
+        font-size: 1rem;
+      }
+
+      .audience-card {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 140px 0 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item {
+        padding: 24px 16px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAV — Fixed navigation bar
+       ========================================== -->
+  <nav class="nav" role="navigation" aria-label="Navegação principal">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="FlowCriativos - Página inicial">
+        Flow<span class="logo-accent">Criativos</span>
+      </a>
+      <a href="#pricing" class="nav-cta">Quero agora &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       HERO — Principal headline e CTA
+       ========================================== -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="hero-tag-dot" aria-hidden="true"></span>
+          Extensão Chrome para Google Flow
+        </div>
+        <h1 id="hero-heading">
+          Gere <span class="highlight">dezenas de vídeos</span><br>enquanto você dorme.
+        </h1>
+        <p class="hero-subtitle">
+          Para de perder horas gerando criativos um por um no Google Flow. Com o Flow Criativos, você monta uma fila, clica uma vez — e a extensão faz todo o trabalho.
+        </p>
+        <a href="#pricing" class="btn btn-primary btn-lg">
+          <span>Garantir meu acesso</span>
+        </a>
+        <p class="hero-note">Pagamento único · Sem mensalidade · Funciona agora</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       STATS BAR — 4 métricas de impacto
+       ========================================== -->
+  <section class="stats" aria-label="Estatísticas de impacto">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">10×</div>
+          <div class="stat-label">mais criativos por dia</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">0 min</div>
+          <div class="stat-label">de trabalho manual</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">automático no Google Flow</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1 clique</div>
+          <div class="stat-label">para iniciar a fila</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       O PROBLEMA — Pain points da audiência
+       ========================================== -->
+  <section class="section problem" aria-labelledby="problem-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">O problema</div>
+        <h2 id="problem-heading" class="section-title">Criar criativos manualmente<br>está te matando por dentro.</h2>
+        <p class="section-subtitle">
+          Você já sabe que volume de criativos é a chave pro TikTok. Mas produzir cada vídeo à mão no Flow leva eternidades — e ainda assim você nunca tem material suficiente.
+        </p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <span class="pain-icon" aria-hidden="true">&#9203;</span>
+          <h3>Horas desperdiçadas</h3>
+          <p>Você fica 2, 3 horas no Flow clicando, esperando, fazendo download um por um — quando devia estar vendendo.</p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon" aria-hidden="true">&#128201;</span>
+          <h3>Volume insuficiente</h3>
+          <p>Sem volume de criativos, o algoritmo não te distribui. Pouco criativo = pouca chance de viralizar.</p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon" aria-hidden="true">&#128558;</span>
+          <h3>Processo repetitivo</h3>
+          <p>Copiar prompt, colar, gerar, esperar, baixar, repetir. 50 vezes seguidas. Isso não é produção, é tortura.</p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon" aria-hidden="true">&#129327;</span>
+          <h3>Escalar parece impossível</h3>
+          <p>Pra escalar você precisaria de uma equipe inteira só pra gerar vídeo. Ou uma extensão que faça isso por você.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       A SOLUÇÃO — Features da extensão
+       ========================================== -->
+  <section class="section" aria-labelledby="solution-heading">
+    <div class="container">
+      <div class="section-label">A solução</div>
+      <h2 id="solution-heading" class="section-title">Uma extensão que trabalha<br>enquanto você não trabalha.</h2>
+      <div class="solution-content">
+        <p>
+          O Flow Criativos se integra diretamente ao Google Flow. Você monta sua fila de prompts com avatar e criativos, aperta um botão — e vai fazer outra coisa. Quando você voltar, os vídeos já estão prontos na sua pasta.
+        </p>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">&#10003;</div>
+            <span>Envio automático de múltiplos prompts em fila</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">&#10003;</div>
+            <span>Upload automático do avatar em cada geração</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">&#10003;</div>
+            <span>Download em lote organizado por pasta e criativo</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">&#10003;</div>
+            <span>Detecção inteligente de rate limit e queue full</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">&#10003;</div>
+            <span>Criação de novos projetos automaticamente por criativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       COMO FUNCIONA — 4 passos do processo
+       ========================================== -->
+  <section class="section steps" aria-labelledby="steps-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Como funciona</div>
+        <h2 id="steps-heading" class="section-title">Em 3 passos, a automação toma conta.</h2>
+        <p class="section-subtitle">Sem configuração complexa. Sem API. Sem código.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number" aria-hidden="true">1</div>
+          <h3>Instale a extensão</h3>
+          <p>Baixe, descompacte e ative no Chrome em menos de 60 segundos. Tem tutorial em vídeo passo a passo incluso.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number" aria-hidden="true">2</div>
+          <h3>Monte sua fila</h3>
+          <p>Cole seus prompts, suba o avatar do personagem e configure quantos criativos quiser rodar em sequência.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number" aria-hidden="true">3</div>
+          <h3>Clique em iniciar</h3>
+          <p>A extensão abre o Flow, gera tudo, baixa automaticamente e organiza por pasta. Você pode ir fazer outra coisa.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number" aria-hidden="true">4</div>
+          <h3>Pegue os vídeos</h3>
+          <p>Todos os clipes estão na sua pasta, nomeados, organizados e prontos pra subir no TikTok ou editar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       BENEFÍCIOS — 6 cards com diferenciais
+       ========================================== -->
+  <section class="section" aria-labelledby="benefits-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Por que usar</div>
+        <h2 id="benefits-heading" class="section-title">Tudo que você precisava<br>que o Flow fizesse.</h2>
+        <p class="section-subtitle">Sem limitação de volume. Sem trabalho manual. Sem desculpa pra não escalar.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <span class="benefit-icon" aria-hidden="true">&#128640;</span>
+          <h3>Produção em escala real</h3>
+          <p>Gere 30, 50, 100 clipes num único dia. O que levava uma semana passa a ser feito em horas — sem você precisar olhar pra tela.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-icon" aria-hidden="true">&#129525;</span>
+          <h3>Continuidade visual garantida</h3>
+          <p>Cada imagem usa a anterior como referência. Seus vídeos de história mantêm coerência do começo ao fim, automaticamente.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-icon" aria-hidden="true">&#128190;</span>
+          <h3>Downloads organizados</h3>
+          <p>Cada criativo vai pra sua própria pasta com timestamp. Chega de misturar arquivo de 10 projetos diferentes.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-icon" aria-hidden="true">&#128737;</span>
+          <h3>Resiste a erros do Flow</h3>
+          <p>Detecta rate limit, fila cheia e erros de geração — e lida sozinha com cada um. Você não precisa ficar vigiando.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-icon" aria-hidden="true">&#127916;</span>
+          <h3>Multi-criativo em sequência</h3>
+          <p>Rode diferentes personagens, produtos e roteiros num único batch. A extensão cria novos projetos entre cada criativo.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-icon" aria-hidden="true">&#9889;</span>
+          <h3>Simples de usar</h3>
+          <p>Interface direta. Se você sabe usar o Google Flow, você já sabe usar o Flow Criativos. Sem curva de aprendizado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PARA QUEM É — Perfis de audiência
+       ========================================== -->
+  <section class="section audience" aria-labelledby="audience-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Para quem é</div>
+        <h2 id="audience-heading" class="section-title">Feito pra quem produz em volume.</h2>
+        <p class="section-subtitle">Se você precisa de criativos de vídeo com IA, isso é pra você.</p>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <span class="audience-icon" aria-hidden="true">&#128722;</span>
+          <div>
+            <h3>Afiliados TikTok Shop</h3>
+            <p>Crie dezenas de vídeos de produto por dia para testar o que converte, sem perder horas no processo manual.</p>
+          </div>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon" aria-hidden="true">&#127909;</span>
+          <div>
+            <h3>Criadores UGC</h3>
+            <p>Entregue mais volume de conteúdo para seus clientes sem precisar gravar mais — gere, edite e publique em escala.</p>
+          </div>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon" aria-hidden="true">&#128227;</span>
+          <div>
+            <h3>Agências de Marketing</h3>
+            <p>Escale produção de criativos para múltiplos clientes sem contratar mais editores. Automatize o que é repetitivo.</p>
+          </div>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon" aria-hidden="true">&#129504;</span>
+          <div>
+            <h3>Infoprodutores</h3>
+            <p>Teste hooks, avatares e abordagens em volume real. Dados rápidos, criativo barato, escala imediata.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ANTES vs. DEPOIS — Comparação visual
+       ========================================== -->
+  <section class="section" aria-labelledby="comparison-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Antes vs. Depois</div>
+        <h2 id="comparison-heading" class="section-title">O que muda quando você<br>instala o Flow Criativos.</h2>
+      </div>
+      <div class="comparison-grid">
+        <div class="comparison-col before">
+          <div class="comparison-header">&#10060; Sem a extensão</div>
+          <ul class="comparison-list" role="list">
+            <li><span class="icon" aria-hidden="true">&#10060;</span> 30 minutos pra gerar 5 clipes manualmente</li>
+            <li><span class="icon" aria-hidden="true">&#10060;</span> Fica parado na frente do computador esperando</li>
+            <li><span class="icon" aria-hidden="true">&#10060;</span> Downloads bagunçados, sem organização</li>
+            <li><span class="icon" aria-hidden="true">&#10060;</span> Erro no Flow quebra tudo — reinicia na mão</li>
+            <li><span class="icon" aria-hidden="true">&#10060;</span> Máximo de 20–30 clipes por dia com muito esforço</li>
+            <li><span class="icon" aria-hidden="true">&#10060;</span> Impossível testar volume suficiente de criativos</li>
+          </ul>
+        </div>
+        <div class="comparison-col after">
+          <div class="comparison-header">&#9989; Com o Flow Criativos</div>
+          <ul class="comparison-list" role="list">
+            <li><span class="icon" aria-hidden="true">&#9989;</span> Fila configurada em 5 min, executa sozinha</li>
+            <li><span class="icon" aria-hidden="true">&#9989;</span> Você trabalha em outra coisa enquanto gera</li>
+            <li><span class="icon" aria-hidden="true">&#9989;</span> Downloads organizados em pasta por criativo</li>
+            <li><span class="icon" aria-hidden="true">&#9989;</span> Erros detectados e tratados automaticamente</li>
+            <li><span class="icon" aria-hidden="true">&#9989;</span> 100+ clipes por dia sem esforço adicional</li>
+            <li><span class="icon" aria-hidden="true">&#9989;</span> Volume de teste real — descobre o que viraliza</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PRICING — Cartão de preço e CTA de compra
+       ========================================== -->
+  <section class="section pricing" id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Investimento</div>
+        <h2 id="pricing-heading" class="section-title">Acesso único. Para sempre.</h2>
+        <p class="section-subtitle">Sem mensalidade. Sem surpresa. Uma vez, você tem pra sempre.</p>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-badge">Oferta de lançamento</div>
+        <div class="pricing-amount">
+          <span class="pricing-currency">R$</span>
+          <span class="pricing-value">97</span>
+        </div>
+        <div class="pricing-period">pagamento único · acesso vitalício</div>
+        <ul class="pricing-features" role="list">
+          <li><span class="check" aria-hidden="true">&#10003;</span> Extensão Flow Criativos completa</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Automação multi-criativo em sequência</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Upload automático de avatar</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Download em lote por pasta</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Detecção de erros e rate limit</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Tutorial em vídeo de instalação</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Atualizações incluídas</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Suporte via WhatsApp</li>
+        </ul>
+        <!-- Substituir href="#" pelo link de pagamento real -->
+        <a href="#" class="btn btn-primary btn-lg pricing-cta">
+          <span>Quero o Flow Criativos agora &rarr;</span>
+        </a>
+        <p class="pricing-secure">&#128274; Compra segura · Entrega imediata · Sem mensalidade</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FAQ — Accordion interativo com perguntas frequentes
+       ========================================== -->
+  <section class="section" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="faq-heading" class="section-title">Dúvidas frequentes</h2>
+      </div>
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            <span>Preciso saber programar pra usar?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Não. É só baixar, descompactar e carregar no Chrome. Em menos de 2 minutos você já está rodando. Tem um tutorial em vídeo passo a passo incluído na compra.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            <span>A extensão funciona com qualquer conta do Google Flow?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Funciona com qualquer conta que tenha acesso ao labs.google/fx/tools/flow. Se você já usa o Flow normalmente, a extensão vai funcionar.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            <span>Tem mensalidade ou é pagamento único?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Pagamento único. Você paga uma vez e tem acesso permanente, incluindo todas as atualizações futuras da extensão.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            <span>E se o Google Flow mudar alguma coisa no layout?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              A extensão é atualizada sempre que necessário. Você recebe a versão nova pelo mesmo canal de entrega, sem custo adicional.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quantos vídeos consigo gerar por dia?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Depende do seu limite de gerações no Google Flow. A extensão maximiza o aproveitamento de cada sessão — você vai chegar no teto do Flow, não no teto da extensão.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FINAL CTA — Última chamada para ação
+       ========================================== -->
+  <section class="section final-cta" aria-labelledby="final-cta-heading">
+    <div class="container">
+      <div class="section-label">Pronto?</div>
+      <h2 id="final-cta-heading" class="section-title">
+        Chega de perder tempo.<br><span class="highlight">Automatize agora.</span>
+      </h2>
+      <p class="section-subtitle">
+        Cada hora que você passa gerando vídeo na mão é uma hora que você podia estar vendendo, testando, escalando. O Flow Criativos resolve isso por você — por uma única vez.
+      </p>
+      <a href="#pricing" class="btn btn-primary btn-lg">
+        <span>Garantir meu acesso — R$97</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-logo">Flow<span class="logo-accent">Criativos</span></div>
+      <p class="footer-text">&copy; 2025 Flow Criativos · Extensão Chrome para Google Flow</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT — FAQ accordion + nav scroll effect
+       ========================================== -->
+  <script>
+    // FAQ Accordion — abre/fecha perguntas ao clicar
+    (function() {
+      var faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item) {
+        var btn = item.querySelector('.faq-question');
+        var answer = item.querySelector('.faq-answer');
+
+        btn.addEventListener('click', function() {
+          var isActive = item.classList.contains('active');
+
+          // Fecha todos os outros
+          faqItems.forEach(function(other) {
+            if (other !== item) {
+              other.classList.remove('active');
+              other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+              other.querySelector('.faq-answer').style.maxHeight = null;
+            }
+          });
+
+          // Toggle o clicado
+          if (isActive) {
+            item.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+            answer.style.maxHeight = null;
+          } else {
+            item.classList.add('active');
+            btn.setAttribute('aria-expanded', 'true');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+    })();
+
+    // Nav scroll — adiciona classe .scrolled ao rolar
+    (function() {
+      var nav = document.querySelector('.nav');
+      var scrollThreshold = 60;
+
+      function onScroll() {
+        if (window.scrollY > scrollThreshold) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // check initial state
+    })();
+  </script>
+
+</body>
+</html>
