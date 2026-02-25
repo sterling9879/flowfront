@@ -128,10 +128,12 @@
     }
 
     .highlight {
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      background: linear-gradient(135deg, var(--accent), var(--accent-light), #e879f9, var(--accent));
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: gradient-x 4s ease infinite;
     }
 
     /* ========================================
@@ -274,8 +276,9 @@
       transform: translateX(-50%);
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
       pointer-events: none;
+      animation: float-orb-1 8s ease-in-out infinite;
     }
 
     .hero::after {
@@ -1047,9 +1050,219 @@
         font-size: 2.2rem;
       }
     }
+
+    /* ========================================
+       ANIMATIONS & DYNAMIC EFFECTS
+       ======================================== */
+
+    /* Gradient text animation */
+    @keyframes gradient-x {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Floating orb animations */
+    @keyframes float-orb-1 {
+      0%, 100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.8; }
+      33% { transform: translateX(-48%) translateY(-20px) scale(1.05); opacity: 1; }
+      66% { transform: translateX(-52%) translateY(15px) scale(0.97); opacity: 0.7; }
+    }
+
+    @keyframes float-orb-2 {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.08); }
+    }
+
+    /* Hero entrance animation */
+    @keyframes hero-fade-up {
+      from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    .hero-content > * {
+      opacity: 0;
+      animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.3s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.5s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.7s; }
+    .hero-content > *:nth-child(5) { animation-delay: 0.9s; }
+
+    /* Button shimmer effect */
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      animation: shimmer 3s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      50%, 100% { left: 120%; }
+    }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-dark), var(--accent), var(--accent-light));
+      z-index: 9999;
+      transition: width 0.05s linear;
+      box-shadow: 0 0 8px var(--accent-glow-strong);
+    }
+
+    /* Particle canvas in hero */
+    .hero-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Extra floating orbs */
+    .hero-orb-2 {
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float-orb-2 10s ease-in-out infinite;
+      border-radius: 50%;
+    }
+
+    .hero-orb-3 {
+      position: absolute;
+      top: 20%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(232, 121, 249, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float-orb-2 12s ease-in-out infinite reverse;
+      border-radius: 50%;
+    }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible,
+    .reveal-left.visible,
+    .reveal-right.visible,
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Pricing card glow animation */
+    @keyframes glow-breathe {
+      0%, 100% { box-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(168, 85, 247, 0.05); border-color: rgba(168, 85, 247, 0.3); }
+      50% { box-shadow: 0 0 50px var(--accent-glow-strong), 0 0 100px rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.5); }
+    }
+
+    .pricing-card {
+      animation: glow-breathe 3s ease-in-out infinite;
+    }
+
+    /* Enhanced card hover effects */
+    .benefit-card:hover,
+    .pain-card:hover,
+    .audience-card:hover {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px var(--accent-glow);
+    }
+
+    /* Step number pulse on hover */
+    .step-number {
+      transition: all 0.3s ease;
+    }
+
+    .step-card:hover .step-number {
+      box-shadow: 0 0 20px var(--accent-glow-strong), 0 0 40px var(--accent-glow);
+      transform: scale(1.1);
+    }
+
+    /* Nav logo hover effect */
+    .logo-accent {
+      transition: all 0.3s ease;
+    }
+
+    .nav-logo:hover .logo-accent {
+      color: var(--accent);
+      text-shadow: 0 0 20px var(--accent-glow-strong);
+    }
+
+    /* Feature item hover animation */
+    .feature-check {
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover .feature-check {
+      background: rgba(168, 85, 247, 0.3);
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal, .reveal-left, .reveal-right, .reveal-scale {
+        opacity: 1;
+        transform: none;
+      }
+
+      .hero-content > * {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <!-- ==========================================
        NAV — Fixed navigation bar
@@ -1067,6 +1280,9 @@
        HERO — Principal headline e CTA
        ========================================== -->
   <section class="hero" aria-labelledby="hero-heading">
+    <canvas class="hero-particles" aria-hidden="true"></canvas>
+    <div class="hero-orb-2" aria-hidden="true"></div>
+    <div class="hero-orb-3" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-content">
         <div class="hero-tag">
@@ -1482,55 +1698,265 @@
        JAVASCRIPT — FAQ accordion + nav scroll effect
        ========================================== -->
   <script>
-    // FAQ Accordion — abre/fecha perguntas ao clicar
-    (function() {
-      var faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(function(item) {
-        var btn = item.querySelector('.faq-question');
-        var answer = item.querySelector('.faq-answer');
+  (function() {
+    'use strict';
 
-        btn.addEventListener('click', function() {
-          var isActive = item.classList.contains('active');
-
-          // Fecha todos os outros
-          faqItems.forEach(function(other) {
-            if (other !== item) {
-              other.classList.remove('active');
-              other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-              other.querySelector('.faq-answer').style.maxHeight = null;
-            }
-          });
-
-          // Toggle o clicado
-          if (isActive) {
-            item.classList.remove('active');
-            btn.setAttribute('aria-expanded', 'false');
-            answer.style.maxHeight = null;
-          } else {
-            item.classList.add('active');
-            btn.setAttribute('aria-expanded', 'true');
-            answer.style.maxHeight = answer.scrollHeight + 'px';
+    // ─── FAQ Accordion ────────────────────────────────────
+    var faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(function(item) {
+      var btn = item.querySelector('.faq-question');
+      var answer = item.querySelector('.faq-answer');
+      btn.addEventListener('click', function() {
+        var isActive = item.classList.contains('active');
+        faqItems.forEach(function(other) {
+          if (other !== item) {
+            other.classList.remove('active');
+            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-answer').style.maxHeight = null;
           }
         });
-      });
-    })();
-
-    // Nav scroll — adiciona classe .scrolled ao rolar
-    (function() {
-      var nav = document.querySelector('.nav');
-      var scrollThreshold = 60;
-
-      function onScroll() {
-        if (window.scrollY > scrollThreshold) {
-          nav.classList.add('scrolled');
+        if (isActive) {
+          item.classList.remove('active');
+          btn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = null;
         } else {
-          nav.classList.remove('scrolled');
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // ─── Nav Scroll + Progress Bar ────────────────────────
+    var nav = document.querySelector('.nav');
+    var progressBar = document.querySelector('.scroll-progress');
+    var scrollThreshold = 60;
+
+    function onScroll() {
+      if (window.scrollY > scrollThreshold) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // ─── Scroll Reveal (Intersection Observer) ────────────
+    var revealSelectors = [
+      '.section-header', '.section-label:not(.hero .section-label)',
+      '.pain-card', '.feature-item', '.step-card',
+      '.benefit-card', '.audience-card', '.comparison-col',
+      '.pricing-card', '.faq-item', '.solution-content',
+      '.stats-grid', '.final-cta .container'
+    ];
+
+    var revealElements = document.querySelectorAll(revealSelectors.join(', '));
+    revealElements.forEach(function(el) {
+      el.classList.add('reveal');
+    });
+
+    // Add stagger delays to grid children
+    var staggerContainers = document.querySelectorAll(
+      '.pain-grid, .steps-grid, .benefits-grid, .audience-grid, .features-list, .faq-list'
+    );
+    staggerContainers.forEach(function(container) {
+      var children = container.children;
+      for (var i = 0; i < children.length; i++) {
+        children[i].style.transitionDelay = (i * 0.1) + 's';
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      revealElements.forEach(function(el) {
+        observer.observe(el);
+      });
+    } else {
+      revealElements.forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
+
+    // ─── Stats Counter Animation ──────────────────────────
+    var statNumbers = document.querySelectorAll('.stat-number');
+    var countersAnimated = false;
+
+    function animateCounters() {
+      if (countersAnimated) return;
+      countersAnimated = true;
+
+      statNumbers.forEach(function(el) {
+        var text = el.textContent.trim();
+        var match = text.match(/^(\d+)(.*)/);
+        if (!match) return;
+        var target = parseInt(match[1], 10);
+        var suffix = match[2];
+        if (target === 0) return;
+
+        var duration = 1500;
+        var startTime = null;
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var elapsed = timestamp - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var current = Math.round(easeOutCubic(progress) * target);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+
+        el.textContent = '0' + suffix;
+        requestAnimationFrame(step);
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      var statsSection = document.querySelector('.stats');
+      if (statsSection) {
+        var statsObserver = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) {
+            animateCounters();
+            statsObserver.unobserve(statsSection);
+          }
+        }, { threshold: 0.3 });
+        statsObserver.observe(statsSection);
+      }
+    }
+
+    // ─── Hero Particles (Canvas) ──────────────────────────
+    var canvas = document.querySelector('.hero-particles');
+    if (canvas && canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var particleCount = 40;
+
+      function resizeCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+
+      function createParticle() {
+        return {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3,
+          opacity: Math.random() * 0.5 + 0.1,
+          hue: 265 + Math.random() * 30
+        };
+      }
+
+      function initParticles() {
+        particles = [];
+        for (var i = 0; i < particleCount; i++) {
+          particles.push(createParticle());
         }
       }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll(); // check initial state
-    })();
+      function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.speedX;
+          p.y += p.speedY;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = 'hsla(' + p.hue + ', 70%, 70%, ' + p.opacity + ')';
+          ctx.fill();
+        }
+
+        // Draw subtle connections
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var dx = particles[i].x - particles[j].x;
+            var dy = particles[i].y - particles[j].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = 'hsla(270, 60%, 60%, ' + (0.06 * (1 - dist / 120)) + ')';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(drawParticles);
+      }
+
+      resizeCanvas();
+      initParticles();
+      drawParticles();
+      window.addEventListener('resize', function() {
+        resizeCanvas();
+        initParticles();
+      });
+    }
+
+    // ─── Magnetic Button Effect ───────────────────────────
+    var ctaButtons = document.querySelectorAll('.btn-primary');
+    ctaButtons.forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translateY(-2px) translate(' + (x * 0.08) + 'px, ' + (y * 0.08) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = '';
+      });
+    });
+
+    // ─── Tilt Effect on Cards ─────────────────────────────
+    var tiltCards = document.querySelectorAll('.benefit-card, .pain-card');
+    tiltCards.forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = 'translateY(-4px) perspective(600px) rotateX(' + (y * -4) + 'deg) rotateY(' + (x * 4) + 'deg)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+      });
+    });
+
+    // ─── Smooth Anchor Scroll ─────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+  })();
   </script>
 
 </body>
