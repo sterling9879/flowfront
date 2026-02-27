@@ -313,7 +313,9 @@
       border-radius: 100px;
       cursor: pointer;
       transition: all var(--transition);
-      white-space: nowrap;
+      white-space: normal;
+      text-align: center;
+      max-width: 100%;
       position: relative;
       overflow: hidden;
       background: var(--white);
@@ -1185,7 +1187,24 @@
       .math-vs { display: none; }
       .pricing-card { padding: 40px 28px; }
       .audience-grid { grid-template-columns: 1fr; }
-      .cta-btn-lg { padding: 18px 36px; }
+      .cta-btn {
+        padding: 16px 24px;
+        font-size: 0.9rem;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 100%;
+        line-height: 1.4;
+      }
+      .cta-btn-lg {
+        padding: 18px 28px;
+        font-size: 0.95rem;
+      }
+      .cta-section {
+        padding: 40px 24px;
+      }
+      .hero-cta-group {
+        padding: 0 8px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1194,6 +1213,15 @@
       .hero-warning { font-size: 0.7rem; }
       .product-card { padding: 28px 20px; }
       .pricing-card { padding: 32px 20px; }
+      .cta-btn {
+        padding: 14px 20px;
+        font-size: 0.85rem;
+        gap: 6px;
+      }
+      .cta-btn-lg {
+        padding: 16px 20px;
+        font-size: 0.88rem;
+      }
     }
 
     /* ========================================
