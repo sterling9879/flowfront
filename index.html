@@ -9,6 +9,9 @@
   <meta property="og:description" content="Treinamento completo + duas extensões Chrome exclusivas que automatizam a criação de anúncios. Pagamento único R$97.">
   <meta property="og:type" content="website">
   <meta name="robots" content="index, follow">
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -55,6 +58,95 @@
       --max-width-wide: 1100px;
       --font: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
       --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+      /* Theme-specific */
+      --cta-bg: #ffffff;
+      --cta-color: #000000;
+      --cta-hover-gradient: linear-gradient(135deg, #e0e0e0, #ffffff, #e0e0e0);
+      --cta-hover-shadow: 0 0 60px rgba(255,255,255,0.15), 0 20px 60px rgba(0,0,0,0.4);
+      --cta-glow-1: 0 0 20px rgba(255,255,255,0.1), 0 8px 32px rgba(0,0,0,0.3);
+      --cta-glow-2: 0 0 40px rgba(255,255,255,0.2), 0 8px 32px rgba(0,0,0,0.3);
+      --grid-line: rgba(255,255,255,0.02);
+      --glow-bg: rgba(255,255,255,0.03);
+      --orb-1: rgba(255,255,255,0.015);
+      --orb-2: rgba(255,255,255,0.01);
+      --scanline: rgba(255,255,255,0.003);
+      --particle-color: rgba(255,255,255,0.15);
+      --shimmer: rgba(255,255,255,0.02);
+      --divider-sweep: rgba(255,255,255,0.15);
+      --callout-border: rgba(255,255,255,0.1);
+      --card-top-line: rgba(255,255,255,0.08);
+      --card-gradient: rgba(255,255,255,0.1);
+      --demo-gradient: rgba(255,255,255,0.02);
+      --demo-border-color: rgba(255,255,255,0.15);
+      --demo-bg: rgba(255,255,255,0.05);
+      --demo-hover-border: rgba(255,255,255,0.3);
+      --demo-hover-bg: rgba(255,255,255,0.1);
+      --selection-bg: rgba(255,255,255,0.15);
+      --selection-color: #fff;
+      --pricing-top-line: rgba(255,255,255,0.15);
+      --pricing-gradient: rgba(255,255,255,0.02);
+      --pain-dot-shadow: rgba(255,255,255,0.1);
+      --ghost-hover-shadow: rgba(255,255,255,0.05);
+      --glitch-before: rgba(255,255,255,0.8);
+      --glitch-after: rgba(255,255,255,0.6);
+    }
+
+    /* ========================================
+       LIGHT THEME
+       ======================================== */
+    [data-theme="light"] {
+      --black: #ffffff;
+      --black-pure: #ffffff;
+      --bg-primary: #f8f8fa;
+      --bg-secondary: #f0f0f2;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f5f5f7;
+      --bg-elevated: #e8e8ec;
+      --border: #e0e0e4;
+      --border-light: #d0d0d4;
+      --border-subtle: #ececee;
+      --white: #000000;
+      --text-primary: #1a1a1f;
+      --text-secondary: #5a5a64;
+      --text-muted: #8a8a94;
+      --text-tertiary: #b0b0b8;
+      --accent: #000000;
+      --accent-dim: rgba(0,0,0,0.04);
+      --accent-glow: rgba(0,0,0,0.02);
+      --accent-border: rgba(0,0,0,0.08);
+      --accent-border-hover: rgba(0,0,0,0.15);
+      --gradient-text: linear-gradient(180deg, #1a1a1f 0%, #5a5a64 100%);
+      --gradient-subtle: linear-gradient(180deg, rgba(0,0,0,0.03) 0%, transparent 100%);
+      --cta-bg: #1a1a1f;
+      --cta-color: #ffffff;
+      --cta-hover-gradient: linear-gradient(135deg, #2a2a2f, #1a1a1f, #2a2a2f);
+      --cta-hover-shadow: 0 0 60px rgba(0,0,0,0.15), 0 20px 60px rgba(0,0,0,0.2);
+      --cta-glow-1: 0 0 20px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.1);
+      --cta-glow-2: 0 0 40px rgba(0,0,0,0.12), 0 8px 32px rgba(0,0,0,0.1);
+      --grid-line: rgba(0,0,0,0.03);
+      --glow-bg: rgba(0,0,0,0.02);
+      --orb-1: rgba(0,0,0,0.015);
+      --orb-2: rgba(0,0,0,0.01);
+      --scanline: rgba(0,0,0,0.003);
+      --particle-color: rgba(0,0,0,0.1);
+      --shimmer: rgba(0,0,0,0.03);
+      --divider-sweep: rgba(0,0,0,0.1);
+      --callout-border: rgba(0,0,0,0.1);
+      --card-top-line: rgba(0,0,0,0.06);
+      --card-gradient: rgba(0,0,0,0.05);
+      --demo-gradient: rgba(0,0,0,0.02);
+      --demo-border-color: rgba(0,0,0,0.1);
+      --demo-bg: rgba(0,0,0,0.03);
+      --demo-hover-border: rgba(0,0,0,0.2);
+      --demo-hover-bg: rgba(0,0,0,0.06);
+      --selection-bg: rgba(0,0,0,0.1);
+      --selection-color: #1a1a1f;
+      --pricing-top-line: rgba(0,0,0,0.1);
+      --pricing-gradient: rgba(0,0,0,0.02);
+      --pain-dot-shadow: rgba(0,0,0,0.1);
+      --ghost-hover-shadow: rgba(0,0,0,0.05);
+      --glitch-before: rgba(0,0,0,0.7);
+      --glitch-after: rgba(0,0,0,0.5);
     }
 
     html {
@@ -73,8 +165,8 @@
     }
 
     ::selection {
-      background: rgba(255,255,255,0.15);
-      color: #fff;
+      background: var(--selection-bg);
+      color: var(--selection-color);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -89,8 +181,8 @@
       z-index: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
       -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
@@ -103,7 +195,7 @@
       transform: translateX(-50%);
       width: 120vw;
       height: 80vh;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 60%);
+      background: radial-gradient(ellipse at center, var(--glow-bg) 0%, transparent 60%);
       z-index: 0;
       pointer-events: none;
     }
@@ -122,7 +214,7 @@
       height: 600px;
       top: 10%;
       left: -10%;
-      background: rgba(255,255,255,0.015);
+      background: var(--orb-1);
       animation: orb-float-1 25s ease-in-out infinite;
     }
 
@@ -131,7 +223,7 @@
       height: 500px;
       top: 60%;
       right: -15%;
-      background: rgba(255,255,255,0.01);
+      background: var(--orb-2);
       animation: orb-float-2 30s ease-in-out infinite;
     }
 
@@ -173,8 +265,8 @@
         0deg,
         transparent,
         transparent 2px,
-        rgba(255,255,255,0.003) 2px,
-        rgba(255,255,255,0.003) 4px
+        var(--scanline) 2px,
+        var(--scanline) 4px
       );
     }
 
@@ -232,7 +324,7 @@
       position: absolute;
       width: 2px;
       height: 2px;
-      background: rgba(255,255,255,0.15);
+      background: var(--particle-color);
       border-radius: 50%;
       animation: particle-drift linear infinite;
     }
@@ -278,7 +370,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, var(--shimmer) 50%, transparent 100%);
       animation: shimmer-bar 4s ease-in-out infinite;
     }
 
@@ -318,8 +410,8 @@
       max-width: 100%;
       position: relative;
       overflow: hidden;
-      background: var(--white);
-      color: var(--black);
+      background: var(--cta-bg);
+      color: var(--cta-color);
       letter-spacing: -0.01em;
     }
 
@@ -327,7 +419,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #e0e0e0, #ffffff, #e0e0e0);
+      background: var(--cta-hover-gradient);
       opacity: 0;
       transition: opacity var(--transition);
       border-radius: inherit;
@@ -335,9 +427,7 @@
 
     .cta-btn:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow:
-        0 0 60px rgba(255,255,255,0.15),
-        0 20px 60px rgba(0,0,0,0.4);
+      box-shadow: var(--cta-hover-shadow);
     }
 
     .cta-btn:hover::before {
@@ -373,7 +463,7 @@
     .cta-btn-ghost:hover {
       border-color: var(--accent-border-hover);
       background: var(--accent-dim);
-      box-shadow: 0 0 40px rgba(255,255,255,0.05);
+      box-shadow: var(--ghost-hover-shadow);
     }
 
     /* Pulsing glow on primary CTA */
@@ -382,8 +472,8 @@
     }
 
     @keyframes cta-glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.1), 0 8px 32px rgba(0,0,0,0.3); }
-      50% { box-shadow: 0 0 40px rgba(255,255,255,0.2), 0 8px 32px rgba(0,0,0,0.3); }
+      0%, 100% { box-shadow: var(--cta-glow-1); }
+      50% { box-shadow: var(--cta-glow-2); }
     }
 
     /* ========================================
@@ -489,7 +579,7 @@
       left: -100%;
       width: 60%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      background: linear-gradient(90deg, transparent, var(--divider-sweep), transparent);
       animation: divider-sweep 5s ease-in-out infinite;
     }
 
@@ -557,7 +647,7 @@
     /* Quote/callout style */
     .copy-callout {
       padding: 32px;
-      border-left: 2px solid rgba(255,255,255,0.1);
+      border-left: 2px solid var(--callout-border);
       background: var(--accent-dim);
       border-radius: 0 var(--radius) var(--radius) 0;
       margin: 40px 0;
@@ -598,7 +688,7 @@
       height: 8px;
       border-radius: 50%;
       background: var(--text-tertiary);
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      box-shadow: 0 0 10px var(--pain-dot-shadow);
     }
 
     .pain-list li strong {
@@ -629,7 +719,7 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      background: linear-gradient(90deg, transparent, var(--card-top-line), transparent);
     }
 
     .product-card:hover {
@@ -656,7 +746,7 @@
       position: absolute;
       inset: -1px;
       border-radius: inherit;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      background: linear-gradient(135deg, var(--card-gradient), transparent);
       z-index: -1;
     }
 
@@ -760,28 +850,28 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 60%);
+      background: linear-gradient(135deg, var(--demo-gradient) 0%, transparent 60%);
     }
 
     .demo-block .play-icon {
       width: 64px;
       height: 64px;
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.15);
+      border: 2px solid var(--demo-border-color);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 16px;
       font-size: 1.2rem;
-      background: rgba(255,255,255,0.05);
+      background: var(--demo-bg);
       backdrop-filter: blur(10px);
       transition: all var(--transition);
       cursor: pointer;
     }
 
     .demo-block .play-icon:hover {
-      border-color: rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.1);
+      border-color: var(--demo-hover-border);
+      background: var(--demo-hover-bg);
       transform: scale(1.1);
     }
 
@@ -933,14 +1023,14 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      background: linear-gradient(90deg, transparent, var(--pricing-top-line), transparent);
     }
 
     .pricing-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 40%);
+      background: linear-gradient(180deg, var(--pricing-gradient) 0%, transparent 40%);
       pointer-events: none;
     }
 
@@ -1078,13 +1168,13 @@
     .glitch::before {
       animation: glitch-1 3s infinite;
       clip-path: inset(0 0 80% 0);
-      color: rgba(255,255,255,0.8);
+      color: var(--glitch-before);
     }
 
     .glitch::after {
       animation: glitch-2 3s infinite;
       clip-path: inset(80% 0 0 0);
-      color: rgba(255,255,255,0.6);
+      color: var(--glitch-after);
     }
 
     @keyframes glitch-1 {
@@ -1130,6 +1220,61 @@
       font-weight: 800;
       font-size: inherit;
       font-variant-numeric: tabular-nums;
+    }
+
+    /* ========================================
+       THEME TOGGLE BUTTON
+       ======================================== */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border-light);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all var(--transition);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-border-hover);
+      transform: scale(1.1);
+    }
+
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon {
+      position: absolute;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .theme-toggle .icon-sun {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0.5);
+    }
+
+    .theme-toggle .icon-moon {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    [data-theme="light"] .theme-toggle .icon-sun {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    [data-theme="light"] .theme-toggle .icon-moon {
+      opacity: 0;
+      transform: rotate(90deg) scale(0.5);
     }
 
     /* ========================================
@@ -1409,6 +1554,12 @@
   <div class="bg-orb bg-orb-2"></div>
   <div class="noise"></div>
   <div class="scanlines"></div>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
+    <span class="icon-moon">&#9790;</span>
+    <span class="icon-sun">&#9728;</span>
+  </button>
 
   <!-- Floating Particles -->
   <div class="particles">
@@ -2096,6 +2247,25 @@
        JAVASCRIPT — Scroll Reveal + Effects
        ======================================== -->
   <script>
+    // Theme Toggle
+    (function() {
+      const toggle = document.getElementById('themeToggle');
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+      toggle.addEventListener('click', function() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        if (next === 'dark') {
+          document.documentElement.removeAttribute('data-theme');
+        } else {
+          document.documentElement.setAttribute('data-theme', next);
+        }
+        localStorage.setItem('theme', next);
+      });
+    })();
+
     // Scroll Reveal
     (function() {
       const reveals = document.querySelectorAll('.reveal');
