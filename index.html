@@ -1600,8 +1600,7 @@
       </div>
     </section>
 
-    <!-- ========== CONTEÚDO COM DELAY DE 5 MINUTOS ========== -->
-    <div id="delayed-content" style="display: none; opacity: 0; transition: opacity 1s ease-in-out;">
+    <!-- ========== CONTEÚDO ADICIONAL ========== -->
 
     <div class="divider"></div>
 
@@ -2204,27 +2203,10 @@
       <p>&copy; 2026 Ads 100x — Sora Automation + Flow Criativos. Todos os direitos reservados.</p>
     </footer>
 
-    </div><!-- /delayed-content -->
+    <!-- /conteúdo adicional -->
 
   </div><!-- /page-wrapper -->
 
-  <!-- ========================================
-       JAVASCRIPT — Delayed Content (5 minutos)
-       ======================================== -->
-  <script>
-    (function() {
-      var DELAY_MS = 5 * 60 * 1000; // 5 minutos
-      setTimeout(function() {
-        var el = document.getElementById('delayed-content');
-        if (el) {
-          el.style.display = 'block';
-          // Força reflow para a transição funcionar
-          el.offsetHeight;
-          el.style.opacity = '1';
-        }
-      }, DELAY_MS);
-    })();
-  </script>
 
   <!-- ========================================
        JAVASCRIPT — Scroll Reveal + Effects
