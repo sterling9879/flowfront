@@ -12,6 +12,14 @@
   <script>
     (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
   </script>
+  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+  <link rel="preload" href="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69bd9573ab9c7e1e9b77a1b2/v4/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="preload" href="https://cdn.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/69bd953fab9c7e1e9b77a110/main.m3u8" as="fetch">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://api.vturb.com.br">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -1582,41 +1590,18 @@
       <span>⚠ <strong>AVISO:</strong> Se você gasta mais de 2 horas pra fazer UM criativo, leia esta página até o final.</span>
     </div>
 
-    <!-- ========== HERO ========== -->
-    <section class="hero reveal">
-      <div class="container">
-        <div class="hero-warning">
-          <span class="dot"></span>
-          <span>ADS 100X</span>
-        </div>
-
-        <h1>
-          <span class="gradient-text">Brasileiro de 22 anos cria 100 anúncios por dia</span><br>
-          <span class="line-dim">sem equipe, sem editor e sem gastar 1 real com freelancer</span>
-        </h1>
-
-        <p class="hero-sub">
-          — e agora quer mostrar como faz.
-        </p>
-
-        <div class="hero-cta-group">
-          <a href="#pricing" class="cta-btn cta-btn-lg cta-pulse">
-            <span>QUERO ENTRAR NO ADS 100X POR R$97</span>
-            <span class="arrow">→</span>
-          </a>
-          <p class="hero-micro">Pagamento único · Sem mensalidade · Acesso vitalício</p>
-        </div>
+    <!-- ========== VIDEO VSL ========== -->
+    <section class="hero reveal visible" style="padding-top: 40px; padding-bottom: 20px;">
+      <div class="container" style="display: flex; justify-content: center;">
+        <vturb-smartplayer id="vid-69bd9573ab9c7e1e9b77a1b2" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+        <script type="text/javascript">
+          var s=document.createElement("script"); s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69bd9573ab9c7e1e9b77a1b2/v4/player.js", s.async=!0,document.head.appendChild(s);
+        </script>
       </div>
     </section>
 
-    <!-- ========== VSL PLACEHOLDER ========== -->
-    <section class="copy-section reveal" style="padding-top: 0;">
-      <div class="copy-block" style="text-align: center;">
-        <div style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid var(--border);">
-          <iframe src="https://www.youtube.com/embed/jOM-GYeFQNE" title="ADS 100X" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-        </div>
-      </div>
-    </section>
+    <!-- ========== CONTEÚDO COM DELAY DE 5 MINUTOS ========== -->
+    <div id="delayed-content" style="display: none; opacity: 0; transition: opacity 1s ease-in-out;">
 
     <div class="divider"></div>
 
@@ -2079,7 +2064,7 @@
 
           <p style="color: var(--text-secondary); font-size: 0.95rem; text-align: center; margin-bottom: 24px;">Menos do que você pagaria pra UM freelancer fazer 2 vídeos.</p>
 
-          <a href="https://payt.site/oMC8EeX" class="cta-btn cta-btn-lg cta-pulse" style="width: 100%;">
+          <a href="https://payt.site/bbC2Bdw" class="cta-btn cta-btn-lg cta-pulse" style="width: 100%;">
             <span>QUERO AS FERRAMENTAS + TREINAMENTO POR R$97</span>
             <span class="arrow">→</span>
           </a>
@@ -2180,7 +2165,7 @@
 
     <!-- CTA -->
     <div class="cta-section reveal">
-      <a href="https://payt.site/oMC8EeX" class="cta-btn cta-btn-lg cta-pulse">
+      <a href="https://payt.site/bbC2Bdw" class="cta-btn cta-btn-lg cta-pulse">
         <span>QUERO FAZER 100 CRIATIVOS POR DIA — ENTRAR POR R$97</span>
         <span class="arrow">→</span>
       </a>
@@ -2205,7 +2190,7 @@
 
     <!-- CTA Final -->
     <div class="cta-section reveal">
-      <a href="https://payt.site/oMC8EeX" class="cta-btn cta-btn-lg cta-pulse">
+      <a href="https://payt.site/bbC2Bdw" class="cta-btn cta-btn-lg cta-pulse">
         <span>GARANTIR MINHA VAGA POR R$97</span>
         <span class="arrow">→</span>
       </a>
@@ -2219,7 +2204,27 @@
       <p>&copy; 2026 Ads 100x — Sora Automation + Flow Criativos. Todos os direitos reservados.</p>
     </footer>
 
+    </div><!-- /delayed-content -->
+
   </div><!-- /page-wrapper -->
+
+  <!-- ========================================
+       JAVASCRIPT — Delayed Content (5 minutos)
+       ======================================== -->
+  <script>
+    (function() {
+      var DELAY_MS = 5 * 60 * 1000; // 5 minutos
+      setTimeout(function() {
+        var el = document.getElementById('delayed-content');
+        if (el) {
+          el.style.display = 'block';
+          // Força reflow para a transição funcionar
+          el.offsetHeight;
+          el.style.opacity = '1';
+        }
+      }, DELAY_MS);
+    })();
+  </script>
 
   <!-- ========================================
        JAVASCRIPT — Scroll Reveal + Effects
