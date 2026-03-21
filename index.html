@@ -1,2257 +1,1174 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ads 100x — Crie 100 Anúncios Por Dia Sem Equipe, Sem Editor, Sem Freelancer</title>
-  <meta name="description" content="Brasileiro de 22 anos cria 100 anúncios por dia sem equipe e sem gastar 1 real com freelancer. Treinamento completo + ferramentas exclusivas por R$97.">
-  <meta property="og:title" content="Ads 100x — 100 Anúncios Por Dia No Automático">
-  <meta property="og:description" content="Treinamento completo + duas extensões Chrome exclusivas que automatizam a criação de anúncios. Pagamento único R$97.">
-  <meta property="og:type" content="website">
-  <meta name="robots" content="index, follow">
-  <script>
-    (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
-  </script>
-  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-  <link rel="preload" href="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69bd9573ab9c7e1e9b77a1b2/v4/player.js" as="script">
-  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-  <link rel="preload" href="https://cdn.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/69bd953fab9c7e1e9b77a110/main.m3u8" as="fetch">
-  <link rel="dns-prefetch" href="https://cdn.converteai.net">
-  <link rel="dns-prefetch" href="https://scripts.converteai.net">
-  <link rel="dns-prefetch" href="https://images.converteai.net">
-  <link rel="dns-prefetch" href="https://api.vturb.com.br">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    /* ========================================
-       RESET & VARIABLES
-       ======================================== */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --black: #000000;
-      --black-pure: #000000;
-      --bg-primary: #050505;
-      --bg-secondary: #0a0a0a;
-      --bg-card: #0f0f0f;
-      --bg-card-hover: #141414;
-      --bg-elevated: #1a1a1a;
-      --border: #1a1a1a;
-      --border-light: #2a2a2a;
-      --border-subtle: #111111;
-      --white: #ffffff;
-      --text-primary: #f5f5f7;
-      --text-secondary: #86868b;
-      --text-muted: #6e6e73;
-      --text-tertiary: #48484a;
-      --accent: #8B5CF6;
-      --accent-dim: rgba(139,92,246,0.08);
-      --accent-glow: rgba(139,92,246,0.05);
-      --accent-border: rgba(139,92,246,0.2);
-      --accent-border-hover: rgba(139,92,246,0.4);
-      --gradient-text: linear-gradient(180deg, #ffffff 0%, #c4b5fd 100%);
-      --gradient-subtle: linear-gradient(180deg, rgba(139,92,246,0.08) 0%, transparent 100%);
-      --radius: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --radius-2xl: 32px;
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      --max-width: 820px;
-      --max-width-wide: 1100px;
-      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-      --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
-      /* Theme-specific */
-      --cta-bg: #8B5CF6;
-      --cta-color: #ffffff;
-      --cta-hover-gradient: linear-gradient(135deg, #7C3AED, #8B5CF6, #A78BFA);
-      --cta-hover-shadow: 0 0 60px rgba(139,92,246,0.3), 0 20px 60px rgba(0,0,0,0.4);
-      --cta-glow-1: 0 0 20px rgba(139,92,246,0.2), 0 8px 32px rgba(0,0,0,0.3);
-      --cta-glow-2: 0 0 40px rgba(139,92,246,0.4), 0 8px 32px rgba(0,0,0,0.3);
-      --grid-line: rgba(255,255,255,0.02);
-      --glow-bg: rgba(255,255,255,0.03);
-      --orb-1: rgba(255,255,255,0.015);
-      --orb-2: rgba(255,255,255,0.01);
-      --scanline: rgba(255,255,255,0.003);
-      --particle-color: rgba(139,92,246,0.2);
-      --shimmer: rgba(255,255,255,0.02);
-      --divider-sweep: rgba(139,92,246,0.3);
-      --callout-border: rgba(139,92,246,0.2);
-      --card-top-line: rgba(139,92,246,0.15);
-      --card-gradient: rgba(139,92,246,0.15);
-      --demo-gradient: rgba(139,92,246,0.04);
-      --demo-border-color: rgba(139,92,246,0.2);
-      --demo-bg: rgba(139,92,246,0.08);
-      --demo-hover-border: rgba(139,92,246,0.4);
-      --demo-hover-bg: rgba(139,92,246,0.15);
-      --selection-bg: rgba(255,255,255,0.15);
-      --selection-color: #fff;
-      --pricing-top-line: rgba(139,92,246,0.3);
-      --pricing-gradient: rgba(139,92,246,0.04);
-      --pain-dot-shadow: rgba(255,255,255,0.1);
-      --ghost-hover-shadow: rgba(255,255,255,0.05);
-      --glitch-before: rgba(255,255,255,0.8);
-      --glitch-after: rgba(255,255,255,0.6);
-    }
-
-    /* ========================================
-       LIGHT THEME
-       ======================================== */
-    [data-theme="light"] {
-      --black: #ffffff;
-      --black-pure: #ffffff;
-      --bg-primary: #f8f8fa;
-      --bg-secondary: #f0f0f2;
-      --bg-card: #ffffff;
-      --bg-card-hover: #f5f5f7;
-      --bg-elevated: #e8e8ec;
-      --border: #e0e0e4;
-      --border-light: #d0d0d4;
-      --border-subtle: #ececee;
-      --white: #000000;
-      --text-primary: #1a1a1f;
-      --text-secondary: #5a5a64;
-      --text-muted: #8a8a94;
-      --text-tertiary: #b0b0b8;
-      --accent: #7C3AED;
-      --accent-dim: rgba(124,58,237,0.06);
-      --accent-glow: rgba(124,58,237,0.04);
-      --accent-border: rgba(124,58,237,0.15);
-      --accent-border-hover: rgba(124,58,237,0.3);
-      --gradient-text: linear-gradient(180deg, #1a1a1f 0%, #7C3AED 100%);
-      --gradient-subtle: linear-gradient(180deg, rgba(124,58,237,0.06) 0%, transparent 100%);
-      --cta-bg: #7C3AED;
-      --cta-color: #ffffff;
-      --cta-hover-gradient: linear-gradient(135deg, #6D28D9, #7C3AED, #8B5CF6);
-      --cta-hover-shadow: 0 0 60px rgba(124,58,237,0.2), 0 20px 60px rgba(0,0,0,0.1);
-      --cta-glow-1: 0 0 20px rgba(124,58,237,0.15), 0 8px 32px rgba(0,0,0,0.08);
-      --cta-glow-2: 0 0 40px rgba(124,58,237,0.25), 0 8px 32px rgba(0,0,0,0.08);
-      --grid-line: rgba(0,0,0,0.03);
-      --glow-bg: rgba(0,0,0,0.02);
-      --orb-1: rgba(0,0,0,0.015);
-      --orb-2: rgba(0,0,0,0.01);
-      --scanline: rgba(0,0,0,0.003);
-      --particle-color: rgba(0,0,0,0.1);
-      --shimmer: rgba(0,0,0,0.03);
-      --divider-sweep: rgba(0,0,0,0.1);
-      --callout-border: rgba(0,0,0,0.1);
-      --card-top-line: rgba(0,0,0,0.06);
-      --card-gradient: rgba(0,0,0,0.05);
-      --demo-gradient: rgba(0,0,0,0.02);
-      --demo-border-color: rgba(0,0,0,0.1);
-      --demo-bg: rgba(0,0,0,0.03);
-      --demo-hover-border: rgba(0,0,0,0.2);
-      --demo-hover-bg: rgba(0,0,0,0.06);
-      --selection-bg: rgba(0,0,0,0.1);
-      --selection-color: #1a1a1f;
-      --pricing-top-line: rgba(0,0,0,0.1);
-      --pricing-gradient: rgba(0,0,0,0.02);
-      --pain-dot-shadow: rgba(0,0,0,0.1);
-      --ghost-hover-shadow: rgba(0,0,0,0.05);
-      --glitch-before: rgba(0,0,0,0.7);
-      --glitch-after: rgba(0,0,0,0.5);
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: var(--font);
-      background: var(--black-pure);
-      color: var(--text-primary);
-      line-height: 1.7;
-      overflow-x: hidden;
-      font-size: 17px;
-    }
-
-    ::selection {
-      background: var(--selection-bg);
-      color: var(--selection-color);
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    /* ========================================
-       ANIMATED BACKGROUND — GRID + PARTICLES
-       ======================================== */
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(var(--grid-line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
-    }
-
-    .bg-glow {
-      position: fixed;
-      top: -30vh;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120vw;
-      height: 80vh;
-      background: radial-gradient(ellipse at center, var(--glow-bg) 0%, transparent 60%);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .bg-orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.4;
-    }
-
-    .bg-orb-1 {
-      width: 600px;
-      height: 600px;
-      top: 10%;
-      left: -10%;
-      background: var(--orb-1);
-      animation: orb-float-1 25s ease-in-out infinite;
-    }
-
-    .bg-orb-2 {
-      width: 500px;
-      height: 500px;
-      top: 60%;
-      right: -15%;
-      background: var(--orb-2);
-      animation: orb-float-2 30s ease-in-out infinite;
-    }
-
-    @keyframes orb-float-1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(80px, -40px) scale(1.1); }
-      66% { transform: translate(-40px, 60px) scale(0.95); }
-    }
-
-    @keyframes orb-float-2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(-60px, 50px) scale(1.05); }
-      66% { transform: translate(40px, -30px) scale(0.9); }
-    }
-
-    /* ========================================
-       NOISE TEXTURE OVERLAY
-       ======================================== */
-    .noise {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 256px 256px;
-    }
-
-    /* ========================================
-       SCANLINE EFFECT
-       ======================================== */
-    .scanlines {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        var(--scanline) 2px,
-        var(--scanline) 4px
-      );
-    }
-
-    /* ========================================
-       LAYOUT
-       ======================================== */
-    .page-wrapper {
-      position: relative;
-      z-index: 2;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .container-wide {
-      max-width: var(--max-width-wide);
-    }
-
-    /* ========================================
-       SCROLL REVEAL ANIMATIONS
-       ======================================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* ========================================
-       FLOATING PARTICLES (CSS-only)
-       ======================================== */
-    .particles {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: var(--particle-color);
-      border-radius: 50%;
-      animation: particle-drift linear infinite;
-    }
-
-    .particle:nth-child(1) { left: 10%; top: 20%; animation-duration: 18s; animation-delay: 0s; }
-    .particle:nth-child(2) { left: 25%; top: 80%; animation-duration: 22s; animation-delay: -3s; }
-    .particle:nth-child(3) { left: 40%; top: 40%; animation-duration: 20s; animation-delay: -7s; width: 3px; height: 3px; opacity: 0.8; }
-    .particle:nth-child(4) { left: 55%; top: 10%; animation-duration: 25s; animation-delay: -2s; }
-    .particle:nth-child(5) { left: 70%; top: 60%; animation-duration: 19s; animation-delay: -5s; }
-    .particle:nth-child(6) { left: 85%; top: 30%; animation-duration: 23s; animation-delay: -8s; }
-    .particle:nth-child(7) { left: 15%; top: 70%; animation-duration: 21s; animation-delay: -1s; width: 1px; height: 1px; }
-    .particle:nth-child(8) { left: 60%; top: 90%; animation-duration: 17s; animation-delay: -6s; }
-    .particle:nth-child(9) { left: 90%; top: 50%; animation-duration: 24s; animation-delay: -4s; }
-    .particle:nth-child(10) { left: 35%; top: 15%; animation-duration: 26s; animation-delay: -9s; width: 1.5px; height: 1.5px; }
-
-    @keyframes particle-drift {
-      0% { transform: translate(0, 0) scale(1); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translate(calc(var(--dx, 100px)), calc(var(--dy, -200px))) scale(0.5); opacity: 0; }
-    }
-
-    .particle:nth-child(odd) { --dx: 80px; --dy: -300px; }
-    .particle:nth-child(even) { --dx: -60px; --dy: -250px; }
-
-    /* ========================================
-       TOP ALERT BAR
-       ======================================== */
-    .alert-bar {
-      position: relative;
-      padding: 14px 24px;
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      color: var(--text-secondary);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-primary);
-      overflow: hidden;
-    }
-
-    .alert-bar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent 0%, var(--shimmer) 50%, transparent 100%);
-      animation: shimmer-bar 4s ease-in-out infinite;
-    }
-
-    @keyframes shimmer-bar {
-      0%, 100% { transform: translateX(-100%); }
-      50% { transform: translateX(100%); }
-    }
-
-    .alert-bar span {
-      position: relative;
-      z-index: 1;
-    }
-
-    .alert-bar strong {
-      color: var(--white);
-      font-weight: 700;
-    }
-
-    /* ========================================
-       CTA BUTTONS
-       ======================================== */
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 18px 40px;
-      font-family: var(--font);
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: all var(--transition);
-      white-space: normal;
-      text-align: center;
-      max-width: 100%;
-      position: relative;
-      overflow: hidden;
-      background: var(--cta-bg);
-      color: var(--cta-color);
-      letter-spacing: -0.01em;
-    }
-
-    .cta-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--cta-hover-gradient);
-      opacity: 0;
-      transition: opacity var(--transition);
-      border-radius: inherit;
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: var(--cta-hover-shadow);
-    }
-
-    .cta-btn:hover::before {
-      opacity: 1;
-    }
-
-    .cta-btn span {
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-btn .arrow {
-      position: relative;
-      z-index: 1;
-      transition: transform var(--transition);
-    }
-
-    .cta-btn:hover .arrow {
-      transform: translateX(4px);
-    }
-
-    .cta-btn-lg {
-      padding: 22px 52px;
-      font-size: 1.05rem;
-    }
-
-    .cta-btn-ghost {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid var(--accent-border);
-    }
-
-    .cta-btn-ghost:hover {
-      border-color: var(--accent-border-hover);
-      background: var(--accent-dim);
-      box-shadow: var(--ghost-hover-shadow);
-    }
-
-    /* Pulsing glow on primary CTA */
-    .cta-pulse {
-      animation: cta-glow 3s ease-in-out infinite;
-    }
-
-    @keyframes cta-glow {
-      0%, 100% { box-shadow: var(--cta-glow-1); }
-      50% { box-shadow: var(--cta-glow-2); }
-    }
-
-    /* ========================================
-       HERO SECTION
-       ======================================== */
-    .hero {
-      padding: 120px 0 80px;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-warning {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-      padding: 8px 20px;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      background: var(--accent-dim);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-warning .dot {
-      width: 6px;
-      height: 6px;
-      background: var(--white);
-      border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.8); }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 28px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero h1 .gradient-text {
-      background: var(--gradient-text);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero h1 .line-dim {
-      color: var(--text-muted);
-      -webkit-text-fill-color: var(--text-muted);
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 48px;
-      line-height: 1.8;
-      font-weight: 400;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .hero-micro {
-      font-size: 0.78rem;
-      color: var(--text-tertiary);
-      margin-top: 8px;
-      letter-spacing: 0.02em;
-    }
-
-    /* ========================================
-       HORIZONTAL DIVIDER — ANIMATED LINE
-       ======================================== */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .divider::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, var(--divider-sweep), transparent);
-      animation: divider-sweep 5s ease-in-out infinite;
-    }
-
-    @keyframes divider-sweep {
-      0% { left: -60%; }
-      100% { left: 100%; }
-    }
-
-    /* ========================================
-       LONG-FORM COPY SECTIONS
-       ======================================== */
-    .copy-section {
-      padding: 80px 0;
-    }
-
-    .copy-block {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .copy-block p {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: var(--text-secondary);
-      margin-bottom: 28px;
-    }
-
-    .copy-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    .copy-block p strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-
-    .copy-block .greeting {
-      font-style: italic;
-      color: var(--text-muted);
-      font-size: 1.1rem;
-    }
-
-    .copy-heading {
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.03em;
-      margin-bottom: 28px;
-      color: var(--text-primary);
-    }
-
-    .copy-heading-xl {
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      text-align: center;
-    }
-
-    .copy-heading .gradient-text {
-      background: var(--gradient-text);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Quote/callout style */
-    .copy-callout {
-      padding: 32px;
-      border-left: 2px solid var(--callout-border);
-      background: var(--accent-dim);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      margin: 40px 0;
-      font-style: italic;
-    }
-
-    .copy-callout p {
-      color: var(--text-primary) !important;
-      font-size: 1.15rem !important;
-    }
-
-    /* Pain points list */
-    .pain-list {
-      list-style: none;
-      margin: 32px 0;
-    }
-
-    .pain-list li {
-      padding: 16px 0;
-      padding-left: 32px;
-      position: relative;
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pain-list li:last-child {
-      border-bottom: none;
-    }
-
-    .pain-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--text-tertiary);
-      box-shadow: 0 0 10px var(--pain-dot-shadow);
-    }
-
-    .pain-list li strong {
-      color: var(--text-primary);
-    }
-
-    /* ========================================
-       PRODUCT CARD SECTIONS
-       ======================================== */
-    .product-section {
-      padding: 100px 0;
-    }
-
-    .product-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 56px 48px;
-      background: var(--bg-card);
-      position: relative;
-      overflow: hidden;
-      transition: all var(--transition-slow);
-    }
-
-    .product-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--card-top-line), transparent);
-    }
-
-    .product-card:hover {
-      border-color: var(--border-light);
-      transform: translateY(-4px);
-    }
-
-    .product-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-      font-size: 1.4rem;
-      position: relative;
-    }
-
-    .product-icon::after {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background: linear-gradient(135deg, var(--card-gradient), transparent);
-      z-index: -1;
-    }
-
-    .product-card h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    .product-card .subtitle {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      margin-bottom: 32px;
-      line-height: 1.7;
-    }
-
-    /* Steps */
-    .steps {
-      counter-reset: step;
-      margin: 32px 0;
-    }
-
-    .step {
-      counter-increment: step;
-      display: flex;
-      gap: 20px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      align-items: flex-start;
-    }
-
-    .step:last-child {
-      border-bottom: none;
-    }
-
-    .step-num {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      border-radius: 10px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 700;
-      font-family: var(--font-mono);
-      color: var(--text-primary);
-    }
-
-    .step-content p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    /* Feature bullets */
-    .feature-bullets {
-      list-style: none;
-      margin: 32px 0;
-    }
-
-    .feature-bullets li {
-      padding: 14px 0;
-      padding-left: 36px;
-      position: relative;
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .feature-bullets li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-    }
-
-    .feature-bullets li strong {
-      color: var(--text-primary);
-    }
-
-    /* Video demo placeholder */
-    .demo-block {
-      margin: 40px 0;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 60px 24px;
-      text-align: center;
-      background: var(--accent-dim);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .demo-block::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--demo-gradient) 0%, transparent 60%);
-    }
-
-    .demo-block .play-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      border: 2px solid var(--demo-border-color);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      font-size: 1.2rem;
-      background: var(--demo-bg);
-      backdrop-filter: blur(10px);
-      transition: all var(--transition);
-      cursor: pointer;
-    }
-
-    .demo-block .play-icon:hover {
-      border-color: var(--demo-hover-border);
-      background: var(--demo-hover-bg);
-      transform: scale(1.1);
-    }
-
-    .demo-block p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-      position: relative;
-    }
-
-    /* ========================================
-       COMPARISON / MATH BLOCK
-       ======================================== */
-    .math-block {
-      text-align: center;
-      padding: 80px 24px;
-    }
-
-    .math-comparison {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 32px;
-      align-items: center;
-      max-width: 700px;
-      margin: 0 auto 48px;
-    }
-
-    .math-item {
-      padding: 32px 24px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      background: var(--bg-card);
-    }
-
-    .math-item .label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .math-item .value {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      font-family: var(--font-mono);
-    }
-
-    .math-item .value.dim {
-      color: var(--text-muted);
-      text-decoration: line-through;
-      text-decoration-color: var(--text-tertiary);
-    }
-
-    .math-vs {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-tertiary);
-      font-weight: 600;
-    }
-
-    .math-result {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-secondary);
-    }
-
-    .math-result strong {
-      color: var(--white);
-    }
-
-    /* ========================================
-       AUDIENCE / WHO SECTION
-       ======================================== */
-    .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin: 40px 0;
-    }
-
-    .audience-item {
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      background: var(--bg-card);
-      transition: all var(--transition);
-      cursor: default;
-    }
-
-    .audience-item:hover {
-      border-color: var(--border-light);
-      background: var(--bg-card-hover);
-      transform: translateY(-2px);
-    }
-
-    .audience-item .icon-wrap {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-      font-size: 1rem;
-    }
-
-    .audience-item p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .audience-item p strong {
-      color: var(--text-primary);
-    }
-
-    /* ========================================
-       PRICING SECTION
-       ======================================== */
-    .pricing-section {
-      padding: 100px 0;
-      text-align: center;
-    }
-
-    .pricing-card {
-      max-width: 560px;
-      margin: 0 auto;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-2xl);
-      padding: 56px 48px;
-      background: var(--bg-card);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--pricing-top-line), transparent);
-    }
-
-    .pricing-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, var(--pricing-gradient) 0%, transparent 40%);
-      pointer-events: none;
-    }
-
-    .pricing-old {
-      font-size: 1.3rem;
-      color: var(--text-tertiary);
-      text-decoration: line-through;
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .pricing-value {
-      font-size: clamp(3rem, 8vw, 4.5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .pricing-value .currency {
-      font-size: 0.5em;
-      vertical-align: super;
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-
-    .pricing-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 500;
-      margin-bottom: 40px;
-    }
-
-    .pricing-features {
-      list-style: none;
-      text-align: left;
-      margin: 0 0 40px;
-    }
-
-    .pricing-features li {
-      padding: 12px 0;
-      padding-left: 32px;
-      position: relative;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pricing-features li:last-child {
-      border-bottom: none;
-    }
-
-    .pricing-features li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--white);
-      font-weight: 700;
-      font-size: 0.85rem;
-    }
-
-    .pricing-features li strong {
-      color: var(--text-primary);
-    }
-
-    /* ========================================
-       FINAL COPY / PS SECTION
-       ======================================== */
-    .ps-section {
-      padding: 60px 0 100px;
-    }
-
-    .ps-block {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .ps-block p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .ps-block p strong {
-      color: var(--text-secondary);
-    }
-
-    /* ========================================
-       SIGNATURE
-       ======================================== */
-    .signature {
-      font-family: var(--font);
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-top: 40px;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-
-    /* ========================================
-       FOOTER
-       ======================================== */
-    footer {
-      padding: 40px 24px;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      font-size: 0.8rem;
-      color: var(--text-tertiary);
-    }
-
-    /* ========================================
-       GLITCH TEXT EFFECT
-       ======================================== */
-    .glitch {
-      position: relative;
-      display: inline-block;
-    }
-
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .glitch::before {
-      animation: glitch-1 3s infinite;
-      clip-path: inset(0 0 80% 0);
-      color: var(--glitch-before);
-    }
-
-    .glitch::after {
-      animation: glitch-2 3s infinite;
-      clip-path: inset(80% 0 0 0);
-      color: var(--glitch-after);
-    }
-
-    @keyframes glitch-1 {
-      0%, 100% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(2px, -1px); }
-      60% { transform: translate(-1px, 1px); }
-    }
-
-    @keyframes glitch-2 {
-      0%, 100% { transform: translate(0); }
-      25% { transform: translate(2px, -2px); }
-      50% { transform: translate(-2px, 1px); }
-      75% { transform: translate(1px, -1px); }
-    }
-
-    /* ========================================
-       TYPING CURSOR
-       ======================================== */
-    .cursor-blink::after {
-      content: '|';
-      animation: blink-cursor 1s step-end infinite;
-      margin-left: 2px;
-      color: var(--text-muted);
-    }
-
-    @keyframes blink-cursor {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-
-    /* ========================================
-       ANIMATED COUNTER
-       ======================================== */
-    .counter-wrap {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 4px;
-    }
-
-    .counter-num {
-      font-family: var(--font-mono);
-      font-weight: 800;
-      font-size: inherit;
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* ========================================
-       THEME TOGGLE BUTTON
-       ======================================== */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 100;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--border-light);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      transition: all var(--transition);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--accent-border-hover);
-      transform: scale(1.1);
-    }
-
-    .theme-toggle .icon-sun,
-    .theme-toggle .icon-moon {
-      position: absolute;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .theme-toggle .icon-sun {
-      opacity: 0;
-      transform: rotate(-90deg) scale(0.5);
-    }
-
-    .theme-toggle .icon-moon {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-    }
-
-    [data-theme="light"] .theme-toggle .icon-sun {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-    }
-
-    [data-theme="light"] .theme-toggle .icon-moon {
-      opacity: 0;
-      transform: rotate(90deg) scale(0.5);
-    }
-
-    /* ========================================
-       ICON SYSTEM (CSS-only futuristic icons)
-       ======================================== */
-    .icon-hex {
-      width: 40px;
-      height: 40px;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .icon-hex::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    }
-
-    /* ========================================
-       CTA SECTION (full-width)
-       ======================================== */
-    .cta-section {
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .cta-section .cta-text {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      color: var(--text-secondary);
-      margin-bottom: 32px;
-      font-weight: 400;
-    }
-
-    .cta-section .cta-text strong {
-      color: var(--white);
-    }
-
-    /* ========================================
-       RESPONSIVE
-       ======================================== */
-    @media (max-width: 768px) {
-      .hero { padding: 80px 0 60px; }
-      .hero h1 { font-size: 2.2rem; }
-      .copy-section { padding: 60px 0; }
-      .product-card { padding: 36px 28px; }
-      .math-comparison {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .math-vs { display: none; }
-      .pricing-card { padding: 40px 28px; }
-      .audience-grid { grid-template-columns: 1fr; }
-      .cta-btn {
-        padding: 16px 24px;
-        font-size: 0.9rem;
-        border-radius: 16px;
-        width: 100%;
-        max-width: 100%;
-        line-height: 1.4;
-      }
-      .cta-btn-lg {
-        padding: 18px 28px;
-        font-size: 0.95rem;
-      }
-      .cta-section {
-        padding: 40px 24px;
-      }
-      .hero-cta-group {
-        padding: 0 8px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body { font-size: 16px; }
-      .hero h1 { font-size: 1.8rem; }
-      .hero-warning { font-size: 0.7rem; }
-      .product-card { padding: 28px 20px; }
-      .pricing-card { padding: 32px 20px; }
-      .cta-btn {
-        padding: 14px 20px;
-        font-size: 0.85rem;
-        gap: 6px;
-      }
-      .cta-btn-lg {
-        padding: 16px 20px;
-        font-size: 0.88rem;
-      }
-    }
-
-    /* ========================================
-       HORIZONTAL SCROLL TEXT (marquee)
-       ======================================== */
-    .marquee-wrap {
-      overflow: hidden;
-      padding: 24px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 48px;
-      animation: marquee-scroll 30s linear infinite;
-      width: max-content;
-    }
-
-    .marquee-track span {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-tertiary);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    @keyframes marquee-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* ========================================
-       FAQ SECTION
-       ======================================== */
-    .faq-item {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      margin-bottom: 12px;
-      background: var(--bg-card);
-      transition: all var(--transition);
-    }
-
-    .faq-item:hover {
-      border-color: var(--border-light);
-      background: var(--bg-card-hover);
-    }
-
-    .faq-item .faq-q {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .faq-item .faq-a {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 0;
-    }
-
-    /* ========================================
-       MODULE CARDS
-       ======================================== */
-    .module-item {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      margin-bottom: 16px;
-      background: var(--bg-card);
-      transition: all var(--transition);
-    }
-
-    .module-item:hover {
-      border-color: var(--border-light);
-      transform: translateY(-2px);
-    }
-
-    .module-item .module-tag {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .module-item .module-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .module-item .module-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 8px;
-    }
-
-    .module-item .module-price {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .module-item .module-price s {
-      color: var(--text-tertiary);
-    }
-
-    /* ========================================
-       GUARANTEE SECTION
-       ======================================== */
-    .guarantee-block {
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-xl);
-      padding: 48px;
-      background: var(--bg-card);
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .guarantee-block .guarantee-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .guarantee-block h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--text-primary);
-    }
-
-    .guarantee-block p {
-      color: var(--text-secondary);
-      line-height: 1.8;
-      font-size: 1rem;
-      margin-bottom: 16px;
-    }
-
-    .guarantee-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    .guarantee-block p strong {
-      color: var(--text-primary);
-    }
-
-    /* ========================================
-       ANIMATED LINE DECORATION
-       ======================================== */
-    .line-deco {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 48px 0;
-    }
-
-    .line-deco .line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .line-deco .diamond {
-      width: 8px;
-      height: 8px;
-      background: var(--text-tertiary);
-      transform: rotate(45deg);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ads 100x — 100 Criativos Por Dia</title>
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2139708740201297');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2139708740201297&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69bd9573ab9c7e1e9b77a1b2/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/69bd953fab9c7e1e9b77a110/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://api.vturb.com.br">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --purple-deep: #1a0a2e;
+  --purple-dark: #2d1150;
+  --purple-mid: #6c2bd9;
+  --purple-bright: #7c3aed;
+  --purple-glow: #6d28d9;
+  --purple-light: #ede9fe;
+  --white: #ffffff;
+  --white-pure: #ffffff;
+  --gray-light: #6b7280;
+  --gray-mid: #9ca3af;
+  --gray-bg: #f9fafb;
+  --gray-border: #e5e7eb;
+  --black: #ffffff;
+  --black-soft: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --accent-green: #16a34a;
+  --accent-red: #dc2626;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* — NOISE OVERLAY — */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* — GLOW BLOBS — */
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.07;
+  pointer-events: none;
+}
+.glow-blob-1 {
+  width: 600px; height: 600px;
+  background: var(--purple-light);
+  top: -200px; left: -200px;
+}
+.glow-blob-2 {
+  width: 500px; height: 500px;
+  background: var(--purple-light);
+  top: 800px; right: -150px;
+}
+.glow-blob-3 {
+  width: 700px; height: 700px;
+  background: var(--purple-dark);
+  top: 2500px; left: -300px;
+}
+
+/* — LAYOUT — */
+.page-wrapper {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* — TOP BAR — */
+.top-bar {
+  background: var(--purple-mid);
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--white-pure);
+  text-transform: uppercase;
+}
+.top-bar span { 
+  animation: pulse-opacity 2s ease-in-out infinite;
+}
+@keyframes pulse-opacity {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* — HERO — */
+.hero {
+  padding: 64px 24px 48px;
+  text-align: center;
+  position: relative;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--purple-light);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  color: var(--purple-mid);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  line-height: 1.05;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+  margin-bottom: 20px;
+}
+.hero h1 .highlight {
+  color: var(--purple-mid);
+}
+.hero .sub-headline {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+/* — VIDEO — */
+.video-section {
+  padding: 0 24px 56px;
+}
+.video-wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--gray-border);
+  min-height: 200px;
+  box-shadow: 
+    0 0 40px rgba(124, 58, 237, 0.08),
+    0 24px 48px rgba(0, 0, 0, 0.08);
+}
+.video-wrapper iframe,
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  border: none;
+}
+.video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.95rem;
+  padding: 80px 20px;
+}
+.play-btn {
+  width: 72px; height: 72px;
+  background: var(--purple-mid);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 30px rgba(108, 43, 217, 0.4);
+}
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 50px rgba(108, 43, 217, 0.6);
+}
+.play-btn svg { margin-left: 4px; }
+
+/* — PAIN SECTION — */
+.pain-section {
+  padding: 56px 24px;
+}
+.pain-section .container { max-width: 760px; }
+.pain-intro {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.pain-intro strong { color: var(--purple-mid); }
+.pain-text {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+.pain-text strong { color: var(--text-primary); font-weight: 600; }
+
+/* — DIVIDER — */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple-mid), var(--purple-bright));
+  border-radius: 3px;
+  margin: 48px auto;
+}
+
+/* — SECTION HEADERS — */
+.section-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple-mid);
+  background: var(--purple-light);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  padding: 5px 14px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+/* — BULLET LIST — */
+.pain-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 32px 0;
+}
+.pain-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.pain-list li .icon {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  margin-top: 2px;
+  color: var(--accent-red);
+}
+
+/* — CTA BUTTON — */
+.cta-wrap {
+  text-align: center;
+  padding: 40px 24px;
+}
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--purple-mid), var(--purple-bright));
+  color: var(--white-pure);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  padding: 18px 48px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 24px rgba(108, 43, 217, 0.35);
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px rgba(108, 43, 217, 0.5);
+}
+.cta-sub {
+  display: block;
+  margin-top: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* — TARGET SECTION — */
+.target-section {
+  padding: 56px 24px;
+  background: var(--gray-bg);
+  border-top: 1px solid var(--gray-border);
+  border-bottom: 1px solid var(--gray-border);
+}
+.target-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 28px 0 0;
+}
+.target-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+.target-list .icon {
+  flex-shrink: 0;
+  color: var(--purple-mid);
+  margin-top: 2px;
+}
+
+/* — PROOF/STATS — */
+.proof-section {
+  padding: 64px 24px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 36px 0;
+}
+.stat-card {
+  background: var(--purple-light);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.stat-card:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-2px);
+}
+.stat-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: var(--purple-mid);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.proof-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 36px 0;
+}
+.compare-card {
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+}
+.compare-card.bad {
+  background: rgba(220, 38, 38, 0.04);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+}
+.compare-card.good {
+  background: rgba(22, 163, 74, 0.04);
+  border: 1px solid rgba(22, 163, 74, 0.15);
+}
+.compare-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.compare-card.bad .compare-label { color: var(--accent-red); }
+.compare-card.good .compare-label { color: var(--accent-green); }
+.compare-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.compare-detail {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* — STORY — */
+.story-section {
+  padding: 56px 24px;
+  background: var(--gray-bg);
+  border-top: 1px solid var(--gray-border);
+  border-bottom: 1px solid var(--gray-border);
+}
+.story-text {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+.story-text strong { color: var(--text-primary); }
+.story-text em { color: var(--purple-mid); font-style: italic; }
+
+/* — INCLUDES SECTION — */
+.includes-section {
+  padding: 64px 24px;
+}
+.include-card {
+  background: var(--white-pure);
+  border: 1px solid var(--gray-border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.include-card:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.06);
+}
+.include-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.include-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.include-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+.include-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.include-desc strong { color: var(--purple-mid); font-weight: 600; }
+
+/* — BENEFITS BOX — */
+.benefits-box {
+  background: var(--purple-light);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  border-radius: 16px;
+  padding: 36px 28px;
+  margin: 40px 0;
+}
+.benefits-box .section-title { font-size: 1.6rem; margin-bottom: 20px; }
+.benefits-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+.benefits-list .check {
+  flex-shrink: 0;
+  color: var(--accent-green);
+}
+
+/* — PRICING BOX — */
+.pricing-section {
+  padding: 64px 24px;
+  text-align: center;
+  position: relative;
+}
+.pricing-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--white-pure);
+  border: 2px solid var(--purple-mid);
+  border-radius: 24px;
+  padding: 48px 36px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(124, 58, 237, 0.1);
+}
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple-mid), var(--purple-bright), var(--purple-mid));
+}
+.pricing-tag {
+  display: inline-block;
+  background: var(--purple-mid);
+  color: var(--white-pure);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.pricing-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.pricing-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.5rem;
+  color: var(--purple-mid);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.pricing-price sup {
+  font-size: 2rem;
+  vertical-align: super;
+  margin-right: 2px;
+}
+.pricing-type {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+.pricing-includes {
+  list-style: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+  padding: 0 8px;
+}
+.pricing-includes li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.pricing-includes .check { color: var(--accent-green); flex-shrink: 0; }
+.pricing-cta {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, var(--purple-mid), var(--purple-bright));
+  color: var(--white-pure);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 30px rgba(108, 43, 217, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+.pricing-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+.pricing-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px rgba(108, 43, 217, 0.55);
+}
+.pricing-sub {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* — GUARANTEE — */
+.guarantee-section {
+  padding: 48px 24px;
+}
+.guarantee-box {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--gray-bg);
+  border: 1px solid var(--gray-border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+}
+.guarantee-icon {
+  font-size: 2.8rem;
+  margin-bottom: 16px;
+}
+.guarantee-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.guarantee-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* — PS SECTION — */
+.ps-section {
+  padding: 48px 24px;
+}
+.ps-section .container { max-width: 760px; }
+.ps-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+.ps-text strong { color: var(--text-primary); }
+
+/* — FOOTER — */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  border-top: 1px solid var(--gray-border);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.footer-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* — RESPONSIVE — */
+@media (max-width: 600px) {
+  .hero { padding: 40px 16px 28px; }
+  .hero-badge { font-size: 0.7rem; padding: 5px 14px; margin-bottom: 20px; }
+  .hero h1 { font-size: 1.75rem; line-height: 1.1; margin-bottom: 16px; }
+  .hero .sub-headline { font-size: 0.95rem; }
+
+  .video-section { padding: 0 16px 40px; }
+  .video-wrapper { border-radius: 12px; min-height: 160px; }
+
+  .pain-section { padding: 40px 16px; }
+  .pain-intro { font-size: 1.05rem; }
+  .pain-text { font-size: 0.95rem; }
+  .pain-list { gap: 12px; margin: 24px 0; }
+  .pain-list li { font-size: 0.92rem; gap: 10px; }
+  .pain-list li .icon { width: 20px; height: 20px; }
+
+  .section-tag { font-size: 0.7rem; padding: 4px 12px; margin-bottom: 16px; }
+  .section-title { font-size: 1.5rem; margin-bottom: 12px; }
+
+  .cta-wrap { padding: 28px 16px; }
+  .cta-btn { 
+    font-size: 1.1rem; 
+    padding: 16px 28px; 
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .target-section { padding: 40px 16px; }
+  .target-list { gap: 12px; margin: 20px 0 0; }
+  .target-list li { font-size: 0.92rem; gap: 10px; }
+
+  .story-section { padding: 40px 16px; }
+  .story-text { font-size: 0.95rem; }
+
+  .proof-section { padding: 48px 16px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 20px 12px; border-radius: 12px; }
+  .stat-number { font-size: 1.5rem; }
+  .stat-label { font-size: 0.78rem; }
+
+  .proof-compare { grid-template-columns: 1fr; gap: 12px; }
+  .compare-card { padding: 20px 16px; }
+  .compare-value { font-size: 1.3rem; }
+
+  .includes-section { padding: 48px 16px; }
+  .include-card { padding: 20px 18px; margin-bottom: 14px; border-radius: 12px; }
+  .include-card-header { gap: 10px; margin-bottom: 10px; }
+  .include-icon { font-size: 1.3rem; }
+  .include-title { font-size: 1.2rem; }
+  .include-desc { font-size: 0.9rem; }
+
+  .benefits-box { padding: 28px 20px; border-radius: 12px; }
+  .benefits-list li { font-size: 0.92rem; gap: 10px; }
+
+  .pricing-section { padding: 48px 16px; }
+  .pricing-card { padding: 32px 20px; border-radius: 18px; }
+  .pricing-tag { font-size: 0.7rem; padding: 5px 14px; }
+  .pricing-name { font-size: 1.6rem; }
+  .pricing-price { font-size: 3.2rem; }
+  .pricing-price sup { font-size: 1.5rem; }
+  .pricing-type { font-size: 0.85rem; margin-bottom: 24px; }
+  .pricing-includes { gap: 12px; margin-bottom: 28px; padding: 0; }
+  .pricing-includes li { font-size: 0.9rem; gap: 10px; }
+  .pricing-cta { font-size: 1.2rem; padding: 18px 16px; border-radius: 10px; }
+  .pricing-sub { font-size: 0.75rem; }
+
+  .guarantee-section { padding: 36px 16px; }
+  .guarantee-box { padding: 28px 20px; border-radius: 12px; }
+  .guarantee-icon { font-size: 2.2rem; }
+  .guarantee-title { font-size: 1.3rem; }
+  .guarantee-text { font-size: 0.9rem; }
+
+  .ps-section { padding: 36px 16px; }
+  .ps-text { font-size: 0.88rem; }
+  .divider { margin: 36px auto; }
+
+  .footer { padding: 24px 16px; }
+  .footer-badges { 
+    flex-direction: column; 
+    gap: 8px; 
+    font-size: 0.78rem; 
+  }
+
+  .top-bar { font-size: 0.75rem; padding: 8px 12px; }
+
+  .container { padding: 0 16px; }
+}
+
+/* — ANIMATIONS — */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 <body>
 
-  <!-- Background Effects -->
-  <div class="bg-grid"></div>
-  <div class="bg-glow"></div>
-  <div class="bg-orb bg-orb-1"></div>
-  <div class="bg-orb bg-orb-2"></div>
-  <div class="noise"></div>
-  <div class="scanlines"></div>
+<div class="page-wrapper">
+  <div class="glow-blob glow-blob-1"></div>
+  <div class="glow-blob glow-blob-2"></div>
+  <div class="glow-blob glow-blob-3"></div>
 
-  <!-- Theme Toggle -->
-  <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
-    <span class="icon-moon">&#9790;</span>
-    <span class="icon-sun">&#9728;</span>
-  </button>
-
-  <!-- Floating Particles -->
-  <div class="particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span>⚡ Oferta de lançamento — Preço sobe em breve</span>
   </div>
 
-  <div class="page-wrapper">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Oferta limitada de lançamento</div>
+    <h1>
+      Brasileiro de 22 anos produz <span class="highlight">100 anúncios por dia</span> sem equipe, sem editor e sem gastar R$1 com freelancer
+    </h1>
+    <p class="sub-headline">Usando duas ferramentas que ele mesmo programou — e que agora você pode usar.</p>
+  </section>
 
-    <!-- Alert Bar -->
-    <div class="alert-bar">
-      <span>⚠ <strong>AVISO:</strong> Se você gasta mais de 2 horas pra fazer UM criativo, veja esse vídeo até o final.</span>
+  <!-- VIDEO -->
+  <section class="video-section fade-up">
+    <div class="video-wrapper">
+      <!-- FALLBACK: aparece enquanto o VTurb carrega -->
+      <div class="video-placeholder" id="video-fallback">
+        <div class="play-btn">
+          <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <span>Carregando vídeo...</span>
+      </div>
+      <!-- VTURB PLAYER -->
+      <div id="vturb-container">
+        <vturb-smartplayer id="vid-69bd9573ab9c7e1e9b77a1b2" style="display:block;margin:0 auto;width:100%;max-width:100%;"></vturb-smartplayer>
+      </div>
+      <script type="text/javascript">
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69bd9573ab9c7e1e9b77a1b2/v4/player.js";
+        s.async=!0;
+        s.onload=function(){
+          var fb=document.getElementById("video-fallback");
+          if(fb) fb.style.display="none";
+        };
+        document.head.appendChild(s);
+      </script>
     </div>
-
-    <!-- ========== VIDEO VSL ========== -->
-    <section class="hero reveal visible" style="padding-top: 40px; padding-bottom: 20px;">
-      <div class="container" style="display: flex; justify-content: center;">
-        <vturb-smartplayer id="vid-69bd9573ab9c7e1e9b77a1b2" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
-        <script type="text/javascript">
-          var s=document.createElement("script"); s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69bd9573ab9c7e1e9b77a1b2/v4/player.js", s.async=!0,document.head.appendChild(s);
-        </script>
-      </div>
-    </section>
-
-    <!-- ========== CONTEÚDO PRINCIPAL ========== -->
-
-    <div class="divider"></div>
-
-    <!-- ========== INTRO ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block" style="text-align: center;">
-        <h2 class="copy-heading copy-heading-xl"><span class="gradient-text">O que você recebe quando entra no Ads 100x</span></h2>
-        <p style="max-width: 640px; margin: 0 auto;">Assista o vídeo acima. Depois leia o que está incluso abaixo.</p>
-        <p style="max-width: 640px; margin: 16px auto 0;">Ads 100x é um sistema completo — treinamento + ferramentas exclusivas que eu mesmo programei — pra você produzir <strong>100+ criativos por dia</strong> sem equipe, sem editor e sem pagar freelancer.</p>
-        <p style="max-width: 640px; margin: 16px auto 0;"><strong>Tudo que está aqui dentro eu uso no meu próprio negócio. Todo dia. Não é teoria.</strong></p>
-        <p style="max-width: 640px; margin: 24px auto 0; font-size: 1.15rem;"><strong>Aqui está o que você leva:</strong></p>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== MÓDULOS ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block">
-        <h2 class="copy-heading" style="display:none;">placeholder</h2>
-
-        <p>Deixa eu te contar uma coisa.</p>
-
-        <p>Há menos de dois anos, eu estava na mesma situação que provavelmente você está agora.</p>
-
-        <p>Eu sabia que precisava fazer anúncios. Muitos anúncios. Todo mundo fala isso: "testa mais criativos", "escala os testes", "quem testa mais, ganha".</p>
-
-        <p>Legal. Mas ninguém te diz <strong>COMO</strong> fazer isso quando você é uma pessoa só.</p>
-
-        <p>Eu tentei de tudo.</p>
-
-        <p>Tentei contratar freelancer — R$50, R$80, R$150 por vídeo. Faz a conta: se você precisa de 10 criativos por dia, são R$500 a R$1.500 <strong>TODO DIA</strong> só em produção. Em um mês, isso dá R$15.000 a R$45.000.</p>
-
-        <div class="copy-callout">
-          <p>Só pra TESTAR. Sem garantia nenhuma de que vai vender.</p>
-        </div>
-
-        <p>Tentei fazer eu mesmo no CapCut — levava 40 minutos, uma hora por vídeo. No final do dia eu tinha feito 3 ou 4 criativos e já estava exausto.</p>
-
-        <p>Tentei usar IA genérica — o resultado parecia robô. Ninguém clicava. Ninguém comprava. Eu estava jogando dinheiro fora com tráfego pra criativos que pareciam lixo.</p>
-
-        <p><strong>E aí veio o momento que mudou tudo.</strong></p>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== A DESCOBERTA ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block">
-        <h2 class="copy-heading">A Descoberta</h2>
-
-        <!-- [PREENCHER: sua história real. O momento concreto.] -->
-
-        <p>Eu percebi uma coisa que 99% das pessoas não percebem:</p>
-
-        <div class="copy-callout">
-          <p>O problema nunca foi a qualidade de UM criativo. O problema é que você não consegue fazer <strong>QUANTIDADE</strong> com qualidade.</p>
-        </div>
-
-        <p>Todo mundo no mercado fala sobre "o criativo perfeito". O anúncio matador. O vídeo viral.</p>
-
-        <p>Isso é meia verdade.</p>
-
-        <p>A verdade completa é que pra cada criativo que viraliza, existem 20, 50, às vezes 100 que não funcionaram. O cara que fez o criativo viral não é mais talentoso que você. <strong>Ele simplesmente testou mais.</strong></p>
-
-        <p>Mas como testar mais se você é uma pessoa só?</p>
-
-        <p>Essa foi a pergunta que me tirou o sono.</p>
-
-        <p>E a resposta não veio de um curso. Não veio de um guru. Veio de mim mesmo.</p>
-
-        <p><strong>Eu sou programador.</strong> E em vez de ficar reclamando que "produzir conteúdo é difícil", eu sentei e construí as ferramentas que resolvem o problema.</p>
-
-        <p>Não ferramentas genéricas. Não apps que qualquer pessoa pode baixar na internet.</p>
-
-        <p>Eu criei <strong>softwares proprietários</strong> — extensões que eu mesmo desenvolvi, que automatizam TODO o processo de criação de anúncios.</p>
-
-        <p>São ferramentas que eu uso todo santo dia no meu negócio. Que me permitem fazer o que nenhum freelancer, nenhum editor e nenhuma IA genérica consegue.</p>
-
-        <p>E que agora, pela primeira vez, eu estou disponibilizando pra quem entrar no <strong>Ads 100x</strong>.</p>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== AS ARMAS ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block" style="text-align: center; margin-bottom: 48px;">
-        <h2 class="copy-heading copy-heading-xl">
-          <span class="gradient-text glitch" data-text="As Armas — Sora Automation + Flow Criativos">As Armas — Sora Automation + Flow Criativos</span>
-        </h2>
-
-        <p style="max-width: 640px; margin: 0 auto;">Aqui é onde a coisa fica interessante.</p>
-
-        <p style="max-width: 640px; margin: 16px auto 0;">O Ads 100x não é "mais um curso de marketing". A diferença é que dentro dele você recebe acesso a <strong>duas ferramentas de automação que eu mesmo construí</strong> e que ninguém mais tem.</p>
-
-        <p style="max-width: 640px; margin: 16px auto 0;">Não são apps da App Store. Não são plugins genéricos. São extensões Chrome que eu programei do zero, que fazem coisas que <strong>nenhuma outra ferramenta do mercado faz.</strong></p>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== SORA AUTOMATION ========== -->
-    <section class="product-section reveal">
-      <div class="container">
-        <div class="product-card">
-          <div class="product-icon">⚡</div>
-          <h3>SORA AUTOMATION</h3>
-          <p class="subtitle">Sua Fábrica de Vídeos com IA</p>
-
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">Imagina o seguinte cenário:</p>
-
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">Você abre o Sora (a IA de vídeo da OpenAI). Você tem 30 cenas diferentes que precisa gerar. Normalmente, você teria que colar um prompt, esperar gerar, colar outro, esperar, colar outro...</p>
-
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;"><strong style="color: var(--text-primary);">Seria um dia INTEIRO de trabalho repetitivo e entediante.</strong></p>
-
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px;">Com o Sora Automation, você cola os 30 prompts de uma vez, clica em "Iniciar" e <strong style="color: var(--text-primary);">vai tomar um café.</strong></p>
-
-          <div class="line-deco"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
-
-          <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 20px; font-weight: 600;">A extensão faz TUDO sozinha</h4>
-
-          <ul class="feature-bullets">
-            <li><strong>Fila inteligente</strong> — Envia automaticamente 3 vídeos simultâneos (que é o limite do Sora). Quando um termina, já manda o próximo. Sem parar. Sem precisar ficar olhando.</li>
-            <li><strong>Biblioteca de Templates</strong> — +25 templates prontos organizados por categoria: UGC realista, cinematográfico, showcase de produto, depoimento, pet, lifestyle. Você escolhe o template, digita suas falas, e o sistema monta o prompt completo pra cada cena automaticamente.</li>
-            <li><strong>Imagens por prompt</strong> — Cada vídeo pode ter sua própria imagem de referência. Quer 10 vídeos com 10 avatares diferentes? A extensão anexa a imagem certa em cada um, automaticamente. Sem fazer upload manual toda vez.</li>
-            <li><strong>Monitoramento em tempo real</strong> — Logs ao vivo mostrando o status de cada vídeo: pendente, gerando, concluído. Você sabe exatamente onde está a qualquer momento.</li>
-          </ul>
-
-          <div class="copy-callout" style="margin-top: 32px;">
-            <p>Na prática: você monta 30 cenas em 10 minutos, clica um botão e a extensão trabalha sozinha por 1 a 2 horas. Quando você volta, tem <strong>30 vídeos prontos.</strong></p>
-            <p>Sem clicar em nada. Sem copiar e colar. Sem esperar tela carregar.</p>
-            <p><strong>30 vídeos. 1 clique. Automático.</strong></p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== FLOW CRIATIVOS ========== -->
-    <section class="product-section reveal">
-      <div class="container">
-        <div class="product-card">
-          <div class="product-icon">◈</div>
-          <h3>FLOW CRIATIVOS</h3>
-          <p class="subtitle">Produção em Massa no Google Flow</p>
-
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">O Google Flow é outra IA de geração de vídeo — <strong style="color: var(--text-primary);">gratuita e com qualidade absurda.</strong> Mas o problema é o mesmo: produzir em volume manualmente é um pesadelo.</p>
-
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">O Flow Criativos resolve isso.</p>
-
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px;">Funciona assim: você monta "criativos" — cada criativo é um avatar (a imagem da pessoa) + as frases que ela vai falar. <strong style="color: var(--text-primary);">A extensão faz o resto.</strong></p>
-
-          <div class="line-deco"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
-
-          <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 20px; font-weight: 600;">A extensão faz tudo sozinha</h4>
-
-          <ul class="feature-bullets">
-            <li><strong>Batch de múltiplos criativos</strong> — Monte 5, 10, 20 criativos diferentes na mesma sessão. Cada um com seu avatar, suas frases, seu template. A extensão processa tudo em sequência, automaticamente.</li>
-            <li><strong>Upload automático de avatar</strong> — Você escolhe a imagem e a extensão faz o upload sozinha. Encontra o botão, clica, faz o crop na orientação certa (portrait ou landscape), salva. Tudo automático.</li>
-            <li><strong>5 vídeos simultâneos por batch</strong> — O Flow permite até 5 gerações ao mesmo tempo. A extensão usa isso ao máximo: envia 5 prompts de uma vez, espera todos terminarem, e manda mais 5.</li>
-            <li><strong>Detecção inteligente</strong> — Sabe quando cada vídeo termina usando monitoramento do DOM. Sem precisar ficar recarregando a página ou checando manualmente.</li>
-            <li><strong>Download organizado por pasta</strong> — Quando um criativo termina, os vídeos são baixados automaticamente na pasta certa. Criativo 1 vai pra pasta "Criativo 1", criativo 2 vai pra "Criativo 2". Com nome e número sequencial. Tudo limpo.</li>
-            <li><strong>Transição automática entre projetos</strong> — Quando um criativo termina, a extensão cria um novo projeto no Flow automaticamente. Navega pra homepage, clica em "Novo Projeto", espera carregar, e começa o próximo criativo. Sem você tocar em nada.</li>
-            <li><strong>10 templates de lipsync prontos</strong> — UGC Realista, Skincare, Unboxing, Depoimento, Cinematográfico, Showcase de Produto, Talking Head, Antes/Depois, e mais. Ou crie os seus e salve.</li>
-            <li><strong>Dois modos de geração</strong> — Com Avatar (image-to-video, ideal pra UGC com lipsync) ou Só Texto (text-to-video, ideal pra vídeos cinematográficos e B-roll).</li>
-          </ul>
-
-          <div class="copy-callout" style="margin-top: 32px;">
-            <p>Na prática: você monta 5 criativos diferentes (5 avatares, 10 frases cada = 50 vídeos), clica em "Iniciar" e vai fazer outra coisa.</p>
-            <p>A extensão sobe o avatar, digita o prompt, clica em gerar, espera terminar, baixa os vídeos, organiza nas pastas, cria um novo projeto, sobe o próximo avatar, digita o próximo prompt...</p>
-            <p>E repete. E repete. E repete.</p>
-            <p><strong>50 vídeos. 5 avatares diferentes. Tudo automático. Tudo organizado.</strong></p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== O QUE ISSO SIGNIFICA NA PRÁTICA ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block" style="text-align: center;">
-        <h2 class="copy-heading copy-heading-xl">O Que Isso Significa Na Prática</h2>
-      </div>
-
-      <div class="math-block">
-        <div class="math-comparison">
-          <div class="math-item">
-            <div class="label">SEM as ferramentas</div>
-            <div class="value dim">25 vídeos</div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">em 4 horas de trabalho braçal</p>
-          </div>
-          <div class="math-vs">VS</div>
-          <div class="math-item">
-            <div class="value">105 vídeos</div>
-            <div class="label">COM as ferramentas</div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">0 trabalho manual. Organizados por pasta.</p>
-          </div>
-        </div>
-
-        <p class="math-result">
-          Isso é <strong>4x mais criativos em 4x menos tempo.</strong>
-        </p>
-      </div>
-
-      <div class="copy-block">
-        <p><strong>SEM as ferramentas:</strong> Você abre o Sora. Cola 1 prompt. Espera 3 minutos. Cola outro. Espera. Cola outro. Espera. Em 2 horas, fez 15 vídeos e já quer morrer de tédio. Depois abre o Flow. Faz upload da imagem. Digita a frase. Clica gerar. Espera. Em mais 2 horas, fez mais 10 vídeos. Total: 25 vídeos em 4 horas de trabalho braçal repetitivo.</p>
-
-        <p><strong>COM as ferramentas:</strong> Você abre o Sora Automation. Cola 30 prompts. Clica "Iniciar". Abre o Flow Criativos. Monta 5 criativos com 15 frases cada. Clica "Iniciar". Vai almoçar. Volta. Total: 105 vídeos prontos. 0 trabalho manual. Organizados por pasta.</p>
-
-        <p style="text-align: center;"><strong>E você pode repetir isso todo dia.</strong></p>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== A PROVA ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block">
-        <h2 class="copy-heading">A Prova</h2>
-
-
-        <p>Esses são os criativos que eu fiz na terça-feira passada.</p>
-
-        <p><strong>107 vídeos. 43 variações de copy. 12 ângulos diferentes.</strong></p>
-
-        <p>Tempo total: <strong>2 horas e 47 minutos.</strong></p>
-
-        <p>Se eu tivesse pago um editor pra fazer isso, teria custado entre R$5.000 e R$10.000. Se eu tivesse feito manualmente, teria levado uma semana inteira.</p>
-
-        <p>Fiz em menos de 3 horas.</p>
-
-        <div class="copy-callout">
-          <p>E não foi sorte. Não foi um dia bom. <strong>É o sistema.</strong></p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <div class="cta-section reveal">
-      <a href="#pricing" class="cta-btn cta-pulse">
-        <span>QUERO ENTRAR NO ADS 100X POR R$97</span>
-        <span class="arrow">→</span>
-      </a>
+  </section>
+
+  <!-- PAIN -->
+  <section class="pain-section fade-up">
+    <div class="container">
+      <p class="pain-intro">O motivo de você nunca conseguir testar criativos o suficiente?</p>
+      <p class="pain-text">A real é que você está tentando resolver um problema de <strong>volume</strong> com esforço manual. E esforço manual tem um teto. Sempre tem.</p>
+      <p class="pain-text">Todo mundo fala a mesma coisa: "testa mais criativos", "escala os testes", "quem testa mais, ganha". Legal. Concordo. Mas <em>como</em>?</p>
+
+      <ul class="pain-list">
+        <li>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Freelancer? R$50–R$150 por vídeo. 10 por dia = R$15.000 a R$45.000 por mês. Só pra <em>testar</em>.
+        </li>
+        <li>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Faz na mão? CapCut, 40 minutos por vídeo. 3 criativos por dia e já tá morto.
+        </li>
+        <li>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          IA genérica? Resultado parece robô. Ninguém clica. Dinheiro queimado.
+        </li>
+        <li>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          3 criativos por dia... torce pra funcionar... nenhum funciona... nunca sai do lugar.
+        </li>
+      </ul>
+
+      <p class="pain-text" style="font-size: 1.2rem; color: var(--text-primary); font-weight: 600; text-align: center; margin-top: 32px;">Esse ciclo acabou.</p>
     </div>
+  </section>
 
-    <div class="divider"></div>
+  <!-- CTA 1 -->
+  <div class="cta-wrap fade-up">
+    <a href="https://payt.site/bbC2Bdw" class="cta-btn">CONHECER O ADS 100X AGORA</a>
+  </div>
 
-    <!-- ========== PRA QUEM É ISSO? ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block" style="text-align: center; margin-bottom: 8px;">
-        <h2 class="copy-heading copy-heading-xl">Pra Quem É Isso?</h2>
-        <p style="max-width: 600px; margin: 0 auto;">Agora, deixa eu te perguntar:</p>
+  <!-- LOGIC -->
+  <section class="pain-section fade-up">
+    <div class="container">
+      <span class="section-tag">A Matemática</span>
+      <h2 class="section-title">Sem volume, é impossível encontrar o criativo vencedor</h2>
+      <p class="pain-text">Pra cada anúncio que viraliza, existem 20, 50, às vezes 100 que não funcionaram. O cara que fez o criativo viral não é mais talentoso que você. Ele simplesmente <strong>testou mais</strong>.</p>
+      <p class="pain-text">A diferença entre quem vende e quem não vende não é talento. Não é copy. Não é segmentação. É <strong>quantidade com qualidade</strong>.</p>
+    </div>
+  </section>
+
+  <!-- TARGET -->
+  <section class="target-section fade-up">
+    <div class="container">
+      <span class="section-tag">Pra quem vai ser útil</span>
+      <h2 class="section-title">Se você se encaixa aqui, o Ads 100x foi feito pra você</h2>
+      <ul class="target-list">
+        <li>
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          Afiliados que precisam testar mais criativos pra encontrar o que converte
+        </li>
+        <li>
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          Vendedores de TikTok Shop que sabem que volume é o jogo
+        </li>
+        <li>
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          Donos de e-commerce que gastam fortuna com editor de vídeo
+        </li>
+        <li>
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          Gestores de tráfego que já estão no limite de produção
+        </li>
+        <li>
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          Qualquer pessoa que trava na parte de "criar conteúdo"
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-section fade-up">
+    <div class="container">
+      <p class="story-text">Sinceramente? Eu tava de saco cheio de depender de freelancer, de IA genérica e de trabalho braçal repetitivo.</p>
+      <p class="story-text">Eu sou programador. E em vez de ficar reclamando que "produzir conteúdo é difícil"... eu sentei e <strong>construí as ferramentas que resolvem o problema</strong>.</p>
+      <p class="story-text">Não ferramentas genéricas. Não apps que qualquer pessoa baixa na internet. <strong>Extensões Chrome que eu programei do zero.</strong> Que automatizam TODO o processo. Que eu uso todo santo dia.</p>
+      <p class="story-text">Hoje eu produzo <em>100+ criativos por dia. Sozinho. Em menos de 3 horas.</em></p>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="proof-section fade-up">
+    <div class="container">
+      <span class="section-tag">Resultado na prática</span>
+      <h2 class="section-title">Uma terça-feira qualquer</h2>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Criativos por dia</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">< 3h</div>
+          <div class="stat-label">Tempo total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1 clique</div>
+          <div class="stat-label">Pra rodar tudo</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Pessoa (sem equipe)</div>
+        </div>
       </div>
 
-      <div class="container container-wide">
-        <div class="audience-grid">
-          <div class="audience-item reveal reveal-delay-1">
-            <div class="icon-wrap">⬡</div>
-            <p>Você é <strong>afiliado</strong> e precisa testar mais criativos pra encontrar o que converte?</p>
-          </div>
-          <div class="audience-item reveal reveal-delay-2">
-            <div class="icon-wrap">◇</div>
-            <p>Você vende no <strong>TikTok Shop</strong> e sabe que volume é o jogo, mas não consegue produzir rápido o suficiente?</p>
-          </div>
-          <div class="audience-item reveal reveal-delay-3">
-            <div class="icon-wrap">△</div>
-            <p>Você é <strong>dono de um e-commerce</strong> e gasta uma fortuna com editor de vídeo, mas os resultados não justificam?</p>
-          </div>
-          <div class="audience-item reveal reveal-delay-1">
-            <div class="icon-wrap">○</div>
-            <p>Você é <strong>gestor de tráfego</strong> e seus clientes cobram mais criativos, mas você já está no seu limite?</p>
-          </div>
-          <div class="audience-item reveal reveal-delay-2">
-            <div class="icon-wrap">□</div>
-            <p>Você é <strong>produtor digital</strong> e precisa de criativos de VSL, de anúncio, de conteúdo — tudo ao mesmo tempo?</p>
-          </div>
-          <div class="audience-item reveal reveal-delay-3">
-            <div class="icon-wrap">⬢</div>
-            <p>Ou você simplesmente quer <strong>começar a vender online</strong>, mas trava na parte de "criar conteúdo"?</p>
-          </div>
+      <div class="proof-compare">
+        <div class="compare-card bad">
+          <div class="compare-label">Com freelancer</div>
+          <div class="compare-value">R$5.000–R$10.000</div>
+          <div class="compare-detail">por 100 vídeos</div>
         </div>
-
-        <div style="text-align: center; margin-top: 32px;">
-          <p style="color: var(--text-secondary); font-size: 1.05rem;">Se você respondeu sim pra qualquer uma dessas perguntas,<br><strong style="color: var(--text-primary);">o Ads 100x foi feito pra você.</strong></p>
+        <div class="compare-card good">
+          <div class="compare-label">Com Ads 100x</div>
+          <div class="compare-value">R$0</div>
+          <div class="compare-detail">mesmo volume, todo dia</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="divider"></div>
+  <!-- CTA 2 -->
+  <div class="cta-wrap fade-up">
+    <a href="https://payt.site/bbC2Bdw" class="cta-btn">ACESSAR O ADS 100X AGORA</a>
+  </div>
 
-    <!-- ========== O QUE VOCÊ VAI APRENDER ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block">
-        <h2 class="copy-heading" style="text-align: center;">O Que Você Vai Aprender</h2>
+  <!-- INCLUDES -->
+  <section class="includes-section fade-up">
+    <div class="container">
+      <span class="section-tag">O que você recebe</span>
+      <h2 class="section-title">Tudo que está dentro do Ads 100x</h2>
 
-        <p>O Ads 100x não é só um curso. É um <strong>sistema completo: treinamento + ferramentas exclusivas + templates prontos.</strong></p>
+      <div class="include-card">
+        <div class="include-card-header">
+          <span class="include-icon">🤖</span>
+          <span class="include-title">Sora Automation — Extensão Exclusiva</span>
+        </div>
+        <p class="include-desc">Automatiza geração de vídeos no Sora. Cola até 30 prompts, clica "Iniciar" e vai fazer outra coisa. Fila inteligente de 3 simultâneos. +25 templates prontos. Imagem de referência por prompt. <strong>30 vídeos. 1 clique. Automático.</strong></p>
+      </div>
 
-        <p>Eu vou te mostrar:</p>
+      <div class="include-card">
+        <div class="include-card-header">
+          <span class="include-icon">🎬</span>
+          <span class="include-title">Flow Criativos — Extensão Exclusiva</span>
+        </div>
+        <p class="include-desc">Produção em massa no Google Flow. Upload automático de avatar. 5 gerações simultâneas. Download organizado por pasta. 10 templates de lipsync. <strong>50 vídeos. 5 avatares. Tudo automático.</strong></p>
+      </div>
 
-        <ul class="feature-bullets">
-          <li><strong>As ferramentas exatas que eu uso</strong> — incluindo as duas extensões que eu mesmo criei (Sora Automation e Flow Criativos), que você vai receber acesso completo.</li>
-          <li><strong>Como instalar e configurar tudo</strong> — passo a passo, na sua tela. Mesmo que você nunca tenha instalado uma extensão Chrome na vida.</li>
-          <li><strong>O método de produção em 3 etapas</strong> — como ir de zero a 100+ criativos seguindo um processo simples.</li>
-          <li><strong>Como usar IA sem parecer IA</strong> — 90% das pessoas usam IA errado e produzem conteúdo que parece robô. Eu vou te ensinar o jeito certo: as configurações, os prompts, os templates que fazem o resultado parecer profissional.</li>
-          <li><strong>Como escrever copys que vendem</strong> — mesmo que você nunca tenha escrito uma linha de copy na vida. Eu criei uma extensão de Copy separada que envia prompts otimizados pro GPT e te entrega copys prontas em segundos. Você também recebe essa.</li>
-          <li><strong>Como montar criativos UGC completos</strong> — do avatar à frase final. Templates de lipsync, templates cinematográficos, templates de produto. Tudo pronto pra usar.</li>
-          <li><strong>O segredo da "saturação inteligente"</strong> — por que fazer 100 criativos não é desperdício, é matemática. E como organizar seus testes pra encontrar os vencedores mais rápido que qualquer concorrente.</li>
+      <div class="include-card">
+        <div class="include-card-header">
+          <span class="include-icon">✍️</span>
+          <span class="include-title">Extensão de Copy Automática</span>
+        </div>
+        <p class="include-desc">Envia prompts otimizados pro GPT e te entrega copys profissionais em segundos. Com os prompts exatos que eu uso todo dia. <strong>Chega de encarar tela em branco.</strong></p>
+      </div>
+
+      <div class="include-card">
+        <div class="include-card-header">
+          <span class="include-icon">📦</span>
+          <span class="include-title">+50 Templates Prontos</span>
+        </div>
+        <p class="include-desc">Organizados por nicho (suplementos, beleza, info-produto, e-commerce, TikTok Shop) e por tipo de cena (UGC, cinematográfico, showcase, depoimento, unboxing). <strong>Cola e usa.</strong></p>
+      </div>
+
+      <div class="include-card">
+        <div class="include-card-header">
+          <span class="include-icon">🎓</span>
+          <span class="include-title">Treinamento Completo (A a Z)</span>
+        </div>
+        <p class="include-desc">Da instalação até o centésimo criativo. Filmado na minha tela. Passo a passo. Mesmo que você nunca tenha instalado uma extensão Chrome na vida.</p>
+      </div>
+
+      <div class="include-card">
+        <div class="include-card-header">
+          <span class="include-icon">🔧</span>
+          <span class="include-title">Workshop de Estratégia</span>
+        </div>
+        <p class="include-desc">Como pensar criativos. Como escolher ângulos. Como montar testes. Como analisar o que funciona. Não só o "como" — o "por quê".</p>
+      </div>
+
+      <div class="include-card">
+        <div class="include-card-header">
+          <span class="include-icon">👥</span>
+          <span class="include-title">Comunidade Exclusiva</span>
+        </div>
+        <p class="include-desc">Atualizações das extensões, novos templates, dúvidas respondidas e o que está funcionando toda semana. Quando algo muda, eu atualizo e aviso na hora. <strong>Você não fica sozinho.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS BOX -->
+  <section class="fade-up" style="padding: 0 24px 64px;">
+    <div class="container">
+      <div class="benefits-box">
+        <h3 class="section-title">Com o Ads 100x</h3>
+        <ul class="benefits-list">
+          <li>
+            <svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Você produz 100+ criativos por dia sem depender de ninguém
+          </li>
+          <li>
+            <svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Seus testes rodam em volume real — não em conta-gotas
+          </li>
+          <li>
+            <svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Os criativos parecem profissionais, não parecem IA genérica
+          </li>
+          <li>
+            <svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Toda a operação roda com um clique enquanto você faz outra coisa
+          </li>
+          <li>
+            <svg class="check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Gasta seu tempo pensando em estratégia, não fazendo trabalho braçal
+          </li>
         </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="divider"></div>
-
-    <!-- ========== TUDO QUE ESTÁ INCLUSO ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block">
-        <h2 class="copy-heading copy-heading-xl">Tudo Que Está Incluso</h2>
-        <p style="text-align: center;">Quando você entrar no Ads 100x hoje, vai receber acesso imediato a:</p>
+  <!-- PRICING -->
+  <section class="pricing-section fade-up" id="preco">
+    <div class="container">
+      <div class="pricing-card">
+        <span class="pricing-tag">⚡ Oferta de Lançamento</span>
+        <div class="pricing-name">Acesse o Ads 100x</div>
+        <div class="pricing-price"><sup>R$</sup>97</div>
+        <div class="pricing-type">pagamento único</div>
+        <ul class="pricing-includes">
+          <li>
+            <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Treinamento completo (A a Z)
+          </li>
+          <li>
+            <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Sora Automation (extensão exclusiva)
+          </li>
+          <li>
+            <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Flow Criativos (extensão exclusiva)
+          </li>
+          <li>
+            <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Extensão de Copy Automática
+          </li>
+          <li>
+            <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            +50 Templates prontos
+          </li>
+          <li>
+            <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Workshop de estratégia
+          </li>
+          <li>
+            <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Comunidade + atualizações vitalícias
+          </li>
+        </ul>
+        <a href="https://payt.site/bbC2Bdw" class="pricing-cta">QUERO ENTRAR NO ADS 100X POR R$97</a>
+        <p class="pricing-sub">⚡ Acesso imediato &nbsp;·&nbsp; 🔒 Garantia de 7 dias</p>
       </div>
+    </div>
+  </section>
 
-      <div class="container" style="margin-top: 40px;">
-        <div class="module-item reveal">
-          <div class="module-tag">MÓDULO 1</div>
-          <div class="module-title">O Sistema Completo (de A a Z)</div>
-          <div class="module-desc">Da instalação das ferramentas até o seu centésimo criativo. Passo a passo filmado na minha tela. Você vai fazer junto comigo. Desde o zero — como baixar, instalar e configurar cada ferramenta.</div>
-          <div class="module-price">Se vendido separado: <s>R$497</s></div>
-        </div>
-
-        <div class="module-item reveal">
-          <div class="module-tag">MÓDULO 2</div>
-          <div class="module-title">Sora Automation (Extensão Exclusiva)</div>
-          <div class="module-desc">A extensão que eu criei pra automatizar geração de vídeos no Sora 2. Fila inteligente de até 3 simultâneos. +25 templates prontos. Imagem de referência por prompt. Monitoramento em tempo real. Você cola os prompts, clica "Iniciar" e a extensão faz tudo sozinha. Acesso vitalício + atualizações.</div>
-          <div class="module-price">Se vendido separado: <s>R$297</s></div>
-        </div>
-
-        <div class="module-item reveal">
-          <div class="module-tag">MÓDULO 3</div>
-          <div class="module-title">Flow Criativos (Extensão Exclusiva)</div>
-          <div class="module-desc">A extensão que eu criei pra produção em massa no Google Flow. Batch de múltiplos criativos. Upload automático de avatar. 5 gerações simultâneas. Download organizado por pasta. Transição automática entre projetos. 10 templates de lipsync. Modo com avatar ou só texto. Acesso vitalício + atualizações.</div>
-          <div class="module-price">Se vendido separado: <s>R$297</s></div>
-        </div>
-
-        <div class="module-item reveal">
-          <div class="module-tag">MÓDULO 4</div>
-          <div class="module-title">Banco de +50 Templates Prontos</div>
-          <div class="module-desc">Templates de anúncio organizados por nicho: suplementos, beleza, info-produto, e-commerce, TikTok Shop. Templates de cena (UGC, cinematográfico, showcase, depoimento, unboxing). Templates de copy. Tudo pronto pra colar e usar.</div>
-          <div class="module-price">Se vendido separado: <s>R$197</s></div>
-        </div>
-
-        <div class="module-item reveal">
-          <div class="module-tag">MÓDULO 5</div>
-          <div class="module-title">Copywriting Automático</div>
-          <div class="module-desc">Como usar IA pra escrever copys que convertem — sem parecer genérico. Inclui os prompts exatos que eu uso todo dia. Mais a extensão de Copy que eu criei: ela envia prompts otimizados pro GPT e te entrega copys profissionais em segundos. Formação completa de como usar.</div>
-          <div class="module-price">Se vendido separado: <s>R$197</s></div>
-        </div>
-
-        <div class="module-item reveal">
-          <div class="module-tag">MÓDULO 6</div>
-          <div class="module-title">Automação na Prática</div>
-          <div class="module-desc">Como automatizar as partes repetitivas do processo inteiro. Combinando Sora Automation + Flow Criativos + Copy Automática pra montar uma linha de produção que roda quase sozinha. Gaste seu tempo pensando em estratégia, não fazendo trabalho braçal.</div>
-          <div class="module-price">Se vendido separado: <s>R$397</s></div>
-        </div>
-
-        <div class="module-item reveal" style="border-color: var(--border-light);">
-          <div class="module-tag">BÔNUS 1</div>
-          <div class="module-title">Workshop Completo</div>
-          <div class="module-desc">Todos os princípios e estratégias por trás do sistema. Não só o "como", mas o "por quê". Como pensar criativos, como escolher ângulos, como montar testes, como analisar o que funciona.</div>
-          <div class="module-price">Valor: <s>R$197</s></div>
-        </div>
-
-        <div class="module-item reveal" style="border-color: var(--border-light);">
-          <div class="module-tag">BÔNUS 2</div>
-          <div class="module-title">Comunidade Exclusiva</div>
-          <div class="module-desc">Grupo fechado onde eu posto atualizações das extensões, novos templates, tiro dúvidas e compartilho o que está funcionando toda semana. Você não fica sozinho.</div>
-          <div class="module-price">Valor: <s>R$97/mês</s></div>
-        </div>
-
-        <div class="module-item reveal" style="border-color: var(--border-light);">
-          <div class="module-tag">BÔNUS 3</div>
-          <div class="module-title">[PREENCHER: bônus de escassez real]</div>
-          <div class="module-desc">[Sugestão: "Para os primeiros 50: revisão pessoal de 3 criativos seus" ou "Call ao vivo exclusiva de Q&A" ou "Pack extra de templates premium"]</div>
-          <div class="module-price">Valor: <s>R$[X]</s></div>
-        </div>
-
-        <div style="text-align: center; margin-top: 40px;">
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Valor total se comprado separadamente: <strong style="color: var(--text-primary); text-decoration: line-through;">R$2.176+</strong></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== O PREÇO ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block">
-        <h2 class="copy-heading" style="text-align: center;">O Preço</h2>
-
-        <p>Mas vamos esquecer "valor total" e pensar no custo da alternativa.</p>
-
-        <p>Se você contratar um editor freelancer pra fazer 100 criativos, vai pagar entre <strong>R$5.000 e R$15.000.</strong> E vai ter que pagar de novo no mês seguinte. E de novo. E de novo.</p>
-
-        <p>Se você fosse comprar ferramentas de automação no mercado (se existissem — não existem com essa capacidade), pagaria uma assinatura mensal de R$200, R$500, R$1.000.</p>
-
-        <p>Se você tentasse aprender a programar suas próprias extensões, levaria meses. Talvez anos.</p>
-
-        <p>Mas você não vai pagar R$2.176.</p>
-        <p>Nem R$997.</p>
-        <p>Nem R$497.</p>
-        <p>Nem R$297.</p>
-
-        <p>O investimento pra entrar no Ads 100x hoje — com o treinamento completo, as duas extensões exclusivas, os templates, a extensão de copy, o workshop e o acesso à comunidade — é de apenas:</p>
-      </div>
-    </section>
-
-    <!-- ========== PRICING CARD ========== -->
-    <section class="pricing-section reveal" id="pricing">
-      <div class="container">
-        <div class="pricing-card">
-          <div class="pricing-old">R$2.176</div>
-          <div class="pricing-value"><span class="currency">R$</span>97</div>
-          <div class="pricing-label">Pagamento único · Acesso vitalício</div>
-
-          <ul class="pricing-features">
-            <li><strong>Treinamento completo</strong> — do zero ao centésimo criativo, passo a passo na tela</li>
-            <li><strong>Sora Automation</strong> — extensão Chrome exclusiva para automação do Sora</li>
-            <li><strong>Flow Criativos</strong> — extensão Chrome exclusiva para produção em massa no Google Flow</li>
-            <li><strong>Extensão de Copywriting</strong> — copys profissionais em segundos via GPT</li>
-            <li><strong>+50 Templates prontos</strong> — organizados por nicho e tipo de criativo</li>
-            <li><strong>Workshop completo</strong> — estratégias, ângulos de copy e análise de testes</li>
-            <li><strong>Comunidade exclusiva</strong> — suporte, atualizações e novos templates toda semana</li>
-            <li><strong>Atualizações vitalícias</strong> — toda melhoria futura é sua, sem pagar mais nada</li>
-          </ul>
-
-          <p style="color: var(--text-secondary); font-size: 0.95rem; text-align: center; margin-bottom: 24px;">Menos do que você pagaria pra UM freelancer fazer 2 vídeos.</p>
-
-          <a href="https://payt.site/bbC2Bdw" class="cta-btn cta-btn-lg cta-pulse" style="width: 100%;">
-            <span>QUERO AS FERRAMENTAS + TREINAMENTO POR R$97</span>
-            <span class="arrow">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== GARANTIA ========== -->
-    <section class="copy-section reveal">
-      <div class="guarantee-block">
+  <!-- GUARANTEE -->
+  <section class="guarantee-section fade-up">
+    <div class="container">
+      <div class="guarantee-box">
         <div class="guarantee-icon">🔒</div>
-        <h3>Garantia de 7 Dias</h3>
-        <p>Você tem 7 dias pra assistir tudo, instalar as extensões, testar o sistema e decidir se faz sentido pra você.</p>
-        <p>Se por <strong>QUALQUER motivo</strong> você achar que não vale, me manda uma mensagem e eu devolvo 100% do seu dinheiro. Sem pergunta, sem burocracia, sem constrangimento.</p>
-        <p>Eu posso fazer isso porque sei que funciona. Uso todo dia. E quem aplica, tem resultado.</p>
-        <p><strong>O risco é zero pra você. O único risco real é não fazer nada e continuar gastando tempo e dinheiro do jeito errado.</strong></p>
+        <h3 class="guarantee-title">Garantia de 7 Dias</h3>
+        <p class="guarantee-text">Entra, instala, testa. Se por qualquer motivo não fizer sentido, me manda uma mensagem e eu devolvo 100% do seu dinheiro. Sem pergunta, sem burocracia. Eu posso fazer isso porque sei que funciona. Uso todo dia.</p>
       </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== PERGUNTAS FREQUENTES ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block">
-        <h2 class="copy-heading copy-heading-xl">Perguntas Frequentes</h2>
-      </div>
-
-      <div class="container" style="margin-top: 32px;">
-        <div class="faq-item">
-          <div class="faq-q">"Mas eu não entendo nada de tecnologia"</div>
-          <div class="faq-a">Você sabe usar navegador e clicar num botão? Então consegue. Eu mostro como instalar cada extensão passo a passo, clique por clique. É mais fácil que instalar um app no celular.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">"As extensões funcionam em qualquer computador?"</div>
-          <div class="faq-a">Funcionam em qualquer computador com Google Chrome. Windows, Mac ou Linux. Não precisa de computador potente — se roda Chrome, roda as extensões.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">"Preciso pagar alguma assinatura pra usar o Sora ou o Flow?"</div>
-          <div class="faq-a">O Google Flow é gratuito. O Sora tem um plano gratuito que já permite gerar vídeos. As extensões funcionam em ambos. Você não precisa gastar nada além do R$97.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">"Mas criativos de IA não funcionam, todo mundo percebe"</div>
-          <div class="faq-a">IA genérica não funciona. O que eu ensino é diferente. Os templates que vêm nas extensões foram testados e otimizados pra gerar vídeos que parecem profissionais — UGC realista com lipsync, showcase de produto, depoimentos. Se funcionasse mal, eu não estaria usando todo dia no meu próprio negócio.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">"Mas eu não tenho dinheiro pra tráfego pago"</div>
-          <div class="faq-a">Não precisa. O sistema é sobre PRODUÇÃO de criativos. Funciona pra orgânico também — TikTok, Instagram, Shorts. Se você tem internet, pode usar.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">"Quanto tempo leva pra aprender?"</div>
-          <div class="faq-a">Em 1 dia você instala tudo e produz seus primeiros criativos. Em 1 semana já está rodando o sistema no piloto automático. Não é um curso de 40 horas que você nunca termina — é um sistema prático que você aplica no mesmo dia.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">"E se as plataformas mudarem? As extensões param de funcionar?"</div>
-          <div class="faq-a">Eu uso essas extensões todo dia. Quando algo muda, eu atualizo. Você recebe todas as atualizações de graça, pra sempre. É por isso que tem a comunidade — eu aviso na hora se algo mudar e já mando a versão nova.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">"Parece bom demais pra ser verdade"</div>
-          <div class="faq-a">Eu entendo. Por isso tem garantia de 7 dias. Entra, instala, testa. Se não fizer sentido, pega seu dinheiro de volta. Sem risco nenhum.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">"Já comprei curso e nunca funcionou"</div>
-          <div class="faq-a">Eu não vendo promessa. Vendo ferramentas + processo. É diferente. Você instala a extensão, cola os prompts, clica o botão e os vídeos aparecem. Se seguir os passos, produz. Se não seguir, não produz. Simples.</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ========== A DECISÃO ========== -->
-    <section class="copy-section reveal">
-      <div class="copy-block">
-        <h2 class="copy-heading">A Decisão</h2>
-
-        <p>A decisão é simples.</p>
-
-        <p>Você pode continuar fazendo 2, 3 criativos por dia — manualmente, gastando horas, gastando dinheiro, torcendo pra algum funcionar.</p>
-
-        <p>Ou você pode usar as mesmas ferramentas que eu criei e uso todo dia pra fazer <strong>100+ criativos por dia</strong>, e deixar a matemática trabalhar a seu favor.</p>
-
-        <div class="copy-callout">
-          <p><strong>Quem testa mais, vende mais.</strong> Isso não é opinião. É matemática.</p>
-        </div>
-
-        <p>E agora você tem a chance de usar as mesmas armas que eu uso — as extensões que eu programei, os templates que eu testei, o sistema que eu montei — por menos do que um almoço num restaurante.</p>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <div class="cta-section reveal">
-      <a href="https://payt.site/bbC2Bdw" class="cta-btn cta-btn-lg cta-pulse">
-        <span>QUERO FAZER 100 CRIATIVOS POR DIA — ENTRAR POR R$97</span>
-        <span class="arrow">→</span>
-      </a>
     </div>
+  </section>
 
-    <div class="divider"></div>
+  <!-- FINAL CTA -->
+  <div class="cta-wrap fade-up">
+    <a href="https://payt.site/bbC2Bdw" class="cta-btn">GARANTIR MINHA VAGA POR R$97</a>
+    <span class="cta-sub">👉 Clica no botão antes que o preço de lançamento acabe</span>
+  </div>
 
-    <!-- ========== SIGNATURE + PS ========== -->
-    <section class="ps-section reveal">
-      <div class="ps-block">
-        <p class="signature">Abraão Sterling</p>
-
-        <div class="line-deco"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
-
-        <p><strong>P.S.</strong> — O preço de R$97 é de lançamento. Quando eu fechar essa turma, o preço sobe. Não tem lista de espera. É agora ou é mais caro depois.</p>
-
-        <p><strong>P.P.S.</strong> — Você não está comprando "um curso". Está comprando acesso a ferramentas exclusivas que eu construí e que ninguém mais tem. Ferramentas que eliminam horas de trabalho braçal todo dia. Isso sozinho já vale 10x o investimento.</p>
-
-        <p><strong>P.P.P.S.</strong> — Se você leu até aqui, você já sabe que precisa disso. A única pergunta é se vai agir agora ou vai voltar pra rotina de fazer 3 criativos por dia e torcer. Eu sei qual das duas opções eu escolheria.</p>
-      </div>
-    </section>
-
-    <!-- CTA Final -->
-    <div class="cta-section reveal">
-      <a href="https://payt.site/bbC2Bdw" class="cta-btn cta-btn-lg cta-pulse">
-        <span>GARANTIR MINHA VAGA POR R$97</span>
-        <span class="arrow">→</span>
-      </a>
-      <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 16px; text-align: center;">🔒 Pagamento 100% seguro · Acesso imediato · Garantia de 7 dias</p>
+  <!-- PS -->
+  <section class="ps-section fade-up">
+    <div class="container">
+      <div class="divider"></div>
+      <p class="ps-text"><strong>PS</strong> — O preço de R$97 é de lançamento. Quando eu fechar essa turma, sobe. Não tem lista de espera. É agora ou é mais caro depois.</p>
+      <p class="ps-text"><strong>PPS</strong> — Você não está comprando um curso. Está comprando acesso a ferramentas que eu construí e que ninguém mais tem. Ferramentas que eliminam horas de trabalho braçal todo dia. Um único criativo que funcione já paga o investimento inteiro.</p>
+      <p class="ps-text"><strong>PPPS</strong> — Se você leu até aqui, já sabe que precisa disso. A única pergunta é se vai agir agora... ou vai voltar pra rotina de fazer 3 criativos por dia e torcer.</p>
     </div>
+  </section>
 
-    <div class="divider"></div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-badges">
+      <span>🔒 Pagamento seguro</span>
+      <span>⚡ Acesso imediato</span>
+      <span>✅ Garantia de 7 dias</span>
+    </div>
+    <p>© 2025 Ads 100x. Todos os direitos reservados.</p>
+  </footer>
 
-    <!-- ========== FOOTER ========== -->
-    <footer>
-      <p>&copy; 2026 Ads 100x — Sora Automation + Flow Criativos. Todos os direitos reservados.</p>
-    </footer>
+</div>
 
-    <!-- /conteúdo adicional -->
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
 
-  </div><!-- /page-wrapper -->
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
-
-  <!-- ========================================
-       JAVASCRIPT — Scroll Reveal + Effects
-       ======================================== -->
-  <script>
-    // Theme Toggle
-    (function() {
-      const toggle = document.getElementById('themeToggle');
-      const saved = localStorage.getItem('theme');
-      if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-      }
-      toggle.addEventListener('click', function() {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'light' ? 'dark' : 'light';
-        if (next === 'dark') {
-          document.documentElement.removeAttribute('data-theme');
-        } else {
-          document.documentElement.setAttribute('data-theme', next);
-        }
-        localStorage.setItem('theme', next);
-      });
-    })();
-
-    // Scroll Reveal
-    (function() {
-      const reveals = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
-      });
-
-      reveals.forEach(el => observer.observe(el));
-    })();
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    // Dynamic particle movement variance
-    document.querySelectorAll('.particle').forEach((p, i) => {
-      p.style.setProperty('--dx', (Math.random() * 200 - 100) + 'px');
-      p.style.setProperty('--dy', (-200 - Math.random() * 200) + 'px');
-    });
-
-    // Subtle parallax on hero
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const hero = document.querySelector('.hero');
-      if (hero && scrollY < window.innerHeight) {
-        hero.style.transform = `translateY(${scrollY * 0.15}px)`;
-        hero.style.opacity = 1 - (scrollY / (window.innerHeight * 0.8));
-      }
-    }, { passive: true });
-  </script>
 </body>
 </html>
