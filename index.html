@@ -22,9 +22,9 @@ src="https://www.facebook.com/tr?id=2139708740201297&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69bd9573ab9c7e1e9b77a1b2/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69c42c2a96fd2c2d9b1fe9d5/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/69bd953fab9c7e1e9b77a110/main.m3u8" as="fetch">
+<link rel="preload" href="https://cdn.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/69c42bfe5d5e82223c9286c5/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -222,6 +222,36 @@ body::before {
   box-shadow: 0 0 50px rgba(108, 43, 217, 0.6);
 }
 .play-btn svg { margin-left: 4px; }
+
+/* — SHOWCASE VIDEOS — */
+.showcase-section {
+  padding: 48px 24px 56px;
+}
+.showcase-section .section-title {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.showcase-grid .showcase-item {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--gray-border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+@media (max-width: 800px) {
+  .showcase-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+@media (max-width: 480px) {
+  .showcase-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .showcase-section { padding: 36px 16px 40px; }
+}
 
 /* — PAIN SECTION — */
 .pain-section {
@@ -834,11 +864,11 @@ body::before {
       </div>
       <!-- VTURB PLAYER -->
       <div id="vturb-container">
-        <vturb-smartplayer id="vid-69bd9573ab9c7e1e9b77a1b2" style="display:block;margin:0 auto;width:100%;max-width:100%;"></vturb-smartplayer>
+        <vturb-smartplayer id="vid-69c42c2a96fd2c2d9b1fe9d5" style="display:block;margin:0 auto;width:100%;max-width:100%;"></vturb-smartplayer>
       </div>
       <script type="text/javascript">
         var s=document.createElement("script");
-        s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69bd9573ab9c7e1e9b77a1b2/v4/player.js";
+        s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69c42c2a96fd2c2d9b1fe9d5/v4/player.js";
         s.async=!0;
         s.onload=function(){
           var fb=document.getElementById("video-fallback");
@@ -846,6 +876,39 @@ body::before {
         };
         document.head.appendChild(s);
       </script>
+    </div>
+  </section>
+
+  <!-- SHOWCASE VIDEOS -->
+  <section class="showcase-section fade-up">
+    <div class="container" style="max-width: 900px;">
+      <h2 class="section-title">Veja nossos videos:</h2>
+      <div class="showcase-grid">
+        <div class="showcase-item">
+          <vturb-smartplayer id="vid-69c42bf4f5a026a3bac344a9" style="display:block;margin:0 auto;width:100%;max-width:100%;"></vturb-smartplayer>
+          <script type="text/javascript">
+            (function(){var s=document.createElement("script");s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69c42bf4f5a026a3bac344a9/v4/player.js";s.async=!0;document.head.appendChild(s);})();
+          </script>
+        </div>
+        <div class="showcase-item">
+          <vturb-smartplayer id="vid-69c42bde5d5e82223c928663" style="display:block;margin:0 auto;width:100%;max-width:100%;"></vturb-smartplayer>
+          <script type="text/javascript">
+            (function(){var s=document.createElement("script");s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69c42bde5d5e82223c928663/v4/player.js";s.async=!0;document.head.appendChild(s);})();
+          </script>
+        </div>
+        <div class="showcase-item">
+          <vturb-smartplayer id="vid-69c42bc65610b6167abb85d5" style="display:block;margin:0 auto;width:100%;max-width:100%;"></vturb-smartplayer>
+          <script type="text/javascript">
+            (function(){var s=document.createElement("script");s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69c42bc65610b6167abb85d5/v4/player.js";s.async=!0;document.head.appendChild(s);})();
+          </script>
+        </div>
+        <div class="showcase-item">
+          <vturb-smartplayer id="vid-69c42ba95341b955f71c58f9" style="display:block;margin:0 auto;width:100%;max-width:100%;"></vturb-smartplayer>
+          <script type="text/javascript">
+            (function(){var s=document.createElement("script");s.src="https://scripts.converteai.net/90414944-1d52-4a60-8289-29b1323b6bdf/players/69c42ba95341b955f71c58f9/v4/player.js";s.async=!0;document.head.appendChild(s);})();
+          </script>
+        </div>
+      </div>
     </div>
   </section>
 
