@@ -35,25 +35,25 @@ src="https://www.facebook.com/tr?id=2139708740201297&ev=PageView&noscript=1"
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --purple-deep: #1a0a2e;
-  --purple-dark: #2d1150;
-  --purple-mid: #6c2bd9;
-  --purple-bright: #7c3aed;
-  --purple-glow: #6d28d9;
-  --purple-light: #ede9fe;
-  --white: #ffffff;
-  --white-pure: #ffffff;
-  --gray-light: #6b7280;
-  --gray-mid: #9ca3af;
-  --gray-bg: #f9fafb;
-  --gray-border: #e5e7eb;
-  --black: #ffffff;
-  --black-soft: #f9fafb;
-  --text-primary: #111827;
-  --text-secondary: #374151;
-  --text-muted: #6b7280;
-  --accent-green: #16a34a;
-  --accent-red: #dc2626;
+  --purple-deep: #1a0505;
+  --purple-dark: #3a0e0e;
+  --purple-mid: #a52222;
+  --purple-bright: #c43030;
+  --purple-glow: #8b1a1a;
+  --purple-light: rgba(165, 34, 34, 0.12);
+  --white: #2a0a0a;
+  --white-pure: #2a0a0a;
+  --gray-light: #c4a8a8;
+  --gray-mid: #b89999;
+  --gray-bg: #220808;
+  --gray-border: rgba(255, 255, 255, 0.08);
+  --black: #f5e6e6;
+  --black-soft: #1e0606;
+  --text-primary: #f5e6e6;
+  --text-secondary: #d4b8b8;
+  --text-muted: #b89999;
+  --accent-green: #22c55e;
+  --accent-red: #ef4444;
 }
 
 html { scroll-behavior: smooth; }
@@ -142,7 +142,7 @@ body::before {
 .hero-badge {
   display: inline-block;
   background: var(--purple-light);
-  border: 1px solid rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(165, 34, 34, 0.2);
   color: var(--purple-mid);
   font-size: 0.8rem;
   font-weight: 600;
@@ -182,11 +182,11 @@ body::before {
   background: #000;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--gray-border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   min-height: 200px;
   box-shadow: 
-    0 0 40px rgba(124, 58, 237, 0.08),
-    0 24px 48px rgba(0, 0, 0, 0.08);
+    0 0 40px rgba(165, 34, 34, 0.15),
+    0 24px 48px rgba(0, 0, 0, 0.3);
 }
 .video-wrapper iframe,
 .video-wrapper video {
@@ -215,11 +215,11 @@ body::before {
   justify-content: center;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 30px rgba(108, 43, 217, 0.4);
+  box-shadow: 0 0 30px rgba(165, 34, 34, 0.4);
 }
 .play-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 50px rgba(108, 43, 217, 0.6);
+  box-shadow: 0 0 50px rgba(165, 34, 34, 0.6);
 }
 .play-btn svg { margin-left: 4px; }
 
@@ -290,7 +290,7 @@ body::before {
   text-transform: uppercase;
   color: var(--purple-mid);
   background: var(--purple-light);
-  border: 1px solid rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(165, 34, 34, 0.15);
   padding: 5px 14px;
   border-radius: 6px;
   margin-bottom: 20px;
@@ -342,7 +342,7 @@ body::before {
   border-radius: 12px;
   text-decoration: none;
   transition: transform 0.25s, box-shadow 0.25s;
-  box-shadow: 0 4px 24px rgba(108, 43, 217, 0.35);
+  box-shadow: 0 4px 24px rgba(165, 34, 34, 0.35);
   cursor: pointer;
   border: none;
   position: relative;
@@ -362,7 +362,7 @@ body::before {
 }
 .cta-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 40px rgba(108, 43, 217, 0.5);
+  box-shadow: 0 8px 40px rgba(165, 34, 34, 0.5);
 }
 .cta-sub {
   display: block;
@@ -376,9 +376,9 @@ body::before {
 /* — TARGET SECTION — */
 .target-section {
   padding: 56px 24px;
-  background: var(--gray-bg);
-  border-top: 1px solid var(--gray-border);
-  border-bottom: 1px solid var(--gray-border);
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .target-list {
   list-style: none;
@@ -412,14 +412,14 @@ body::before {
 }
 .stat-card {
   background: var(--purple-light);
-  border: 1px solid rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(165, 34, 34, 0.2);
   border-radius: 14px;
   padding: 28px 20px;
   text-align: center;
   transition: border-color 0.3s, transform 0.3s;
 }
 .stat-card:hover {
-  border-color: rgba(124, 58, 237, 0.3);
+  border-color: rgba(165, 34, 34, 0.4);
   transform: translateY(-2px);
 }
 .stat-number {
@@ -447,12 +447,12 @@ body::before {
   text-align: center;
 }
 .compare-card.bad {
-  background: rgba(220, 38, 38, 0.04);
-  border: 1px solid rgba(220, 38, 38, 0.15);
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.2);
 }
 .compare-card.good {
-  background: rgba(22, 163, 74, 0.04);
-  border: 1px solid rgba(22, 163, 74, 0.15);
+  background: rgba(22, 163, 74, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.2);
 }
 .compare-label {
   font-size: 0.75rem;
@@ -478,9 +478,9 @@ body::before {
 /* — STORY — */
 .story-section {
   padding: 56px 24px;
-  background: var(--gray-bg);
-  border-top: 1px solid var(--gray-border);
-  border-bottom: 1px solid var(--gray-border);
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .story-text {
   font-size: 1.05rem;
@@ -496,16 +496,16 @@ body::before {
   padding: 64px 24px;
 }
 .include-card {
-  background: var(--white-pure);
-  border: 1px solid var(--gray-border);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 32px 28px;
   margin-bottom: 20px;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .include-card:hover {
-  border-color: rgba(124, 58, 237, 0.3);
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.06);
+  border-color: rgba(165, 34, 34, 0.4);
+  box-shadow: 0 4px 20px rgba(165, 34, 34, 0.1);
 }
 .include-card-header {
   display: flex;
@@ -533,7 +533,7 @@ body::before {
 /* — BENEFITS BOX — */
 .benefits-box {
   background: var(--purple-light);
-  border: 1px solid rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(165, 34, 34, 0.15);
   border-radius: 16px;
   padding: 36px 28px;
   margin: 40px 0;
@@ -566,13 +566,13 @@ body::before {
 .pricing-card {
   max-width: 520px;
   margin: 0 auto;
-  background: var(--white-pure);
+  background: rgba(255, 255, 255, 0.04);
   border: 2px solid var(--purple-mid);
   border-radius: 24px;
   padding: 48px 36px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 8px 40px rgba(165, 34, 34, 0.1);
 }
 .pricing-card::before {
   content: '';
@@ -647,7 +647,7 @@ body::before {
   border: none;
   cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
-  box-shadow: 0 4px 30px rgba(108, 43, 217, 0.4);
+  box-shadow: 0 4px 30px rgba(165, 34, 34, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -661,7 +661,7 @@ body::before {
 }
 .pricing-cta:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 40px rgba(108, 43, 217, 0.55);
+  box-shadow: 0 8px 40px rgba(165, 34, 34, 0.55);
 }
 .pricing-sub {
   margin-top: 16px;
@@ -676,8 +676,8 @@ body::before {
 .guarantee-box {
   max-width: 600px;
   margin: 0 auto;
-  background: var(--gray-bg);
-  border: 1px solid var(--gray-border);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 36px 28px;
   text-align: center;
@@ -715,7 +715,7 @@ body::before {
 .footer {
   text-align: center;
   padding: 32px 24px;
-  border-top: 1px solid var(--gray-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.8rem;
   color: var(--text-muted);
 }
